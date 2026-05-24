@@ -1,14 +1,44 @@
-# 1. Fluxo correto da equipe
+# Fluxo Git da Equipe
 
-## Atualizar a development
+# 1. Comandos básicos do Git
+
+```bash
+git fetch origin → ver novidades do GitHub
+
+git branch → ver branches locais
+
+git branch -a → ver todas as branches
+
+git checkout nome-da-branch → trocar de branch
+```
+
+---
+
+# 2. Fluxo da equipe
+
+Todos os membros iniciam clonando a branch `main`.
+
+Depois disso, cada pessoa trabalhará apenas na branch da funcionalidade designada.
+
+---
+
+## Atualizar informações do GitHub
 
 Antes de começar qualquer tarefa:
 
 ```bash
-git checkout development
-git pull origin development
+git fetch origin
 ```
 
+---
+
+## Verificar branches existentes
+
+```bash
+git branch -a
+```
+
+---
 
 ## Entrar na branch da funcionalidade
 
@@ -18,45 +48,9 @@ Exemplo:
 git checkout feature/membros
 ```
 
+---
 
-## Fazer alterações no código
-
-Após modificar arquivos:
-
-```bash
-git add .
-```
-
-
-## Criar commit
-
-Exemplo:
-
-```bash
-git commit -m "feat: adiciona CRUD de membros"
-```
-
-
-## Enviar alterações
-
-```bash
-git push origin feature/membros
-```
-
-
-
-# 2. Fluxo de integração do projeto
-
-O fluxo correto do projeto é:
-
-```txt
-feature/* -> development -> main
-```
-
-
-
-
-# 3. Conferir branch atual
+## Conferir branch atual
 
 ```bash
 git branch
@@ -68,34 +62,96 @@ A branch atual aparecerá com:
 *
 ```
 
+Exemplo:
 
-# 4. Trocar de branch
-
-```bash
-git checkout nome-da-branch
+```txt
+* feature/membros
 ```
 
+---
 
+# 3. Fluxo de desenvolvimento
 
-## Exemplo
+Após entrar na branch correta:
 
-```bash
-git checkout feature/admin
-```
+## Fazer alterações no código
 
+Editar arquivos normalmente.
 
+---
 
-# 5. Verificar alterações
+## Verificar alterações realizadas
 
 ```bash
 git status
 ```
 
+---
 
-
-# 6. Atualizar projeto local
+## Adicionar arquivos modificados
 
 ```bash
-git pull origin development
+git add .
 ```
 
+---
+
+## Criar commit
+
+Exemplo:
+
+```bash
+git commit -m "feat: adiciona CRUD de membros"
+```
+
+---
+
+## Enviar alterações para o GitHub
+
+```bash
+git push origin feature/membros
+```
+
+---
+
+# 4. Fluxo de integração do projeto
+
+O fluxo oficial do projeto será:
+
+```txt
+feature/* → development → main
+```
+
+---
+
+# 5. Explicação do fluxo
+
+## feature/*
+
+Branches de funcionalidades.
+
+Exemplos:
+
+```txt
+feature/membros
+feature/admin
+feature/raipedia
+```
+
+Cada membro desenvolve separadamente na sua branch.
+
+---
+
+## development
+
+Branch de integração da equipe.
+
+Todas as funcionalidades finalizadas serão unidas nela para testes.
+
+---
+
+## main
+
+Branch principal do projeto.
+
+Apenas versões estáveis e prontas para produção devem chegar nela.
