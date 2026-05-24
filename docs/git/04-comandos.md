@@ -1,5 +1,29 @@
 # Fluxo Git da Equipe
 
+# 0. Atualizar a branch main
+
+É recomendado atualizar frequentemente a branch `main`.
+
+Isso evita conflitos futuros.
+
+---
+
+## Ir para a main
+
+```bash
+git checkout main
+```
+
+---
+
+## Atualizar a main local
+
+```bash
+git pull origin main
+```
+
+---
+
 # 1. Comandos básicos do Git
 
 ```bash
@@ -103,7 +127,9 @@ Exemplo:
 ```bash
 git commit -m "feat: adiciona CRUD de membros"
 ```
-
+```txt
+Atente-se ao uso do padrão de commits, verifique o arquivo 03 da pasta git!
+```
 ---
 
 ## Enviar alterações para o GitHub
@@ -111,7 +137,9 @@ git commit -m "feat: adiciona CRUD de membros"
 ```bash
 git push origin feature/membros
 ```
-
+```txt
+Atente-se ao nome da branch da funcionalidade que você esta desenvolvendo!
+```
 ---
 
 # 4. Fluxo de integração do projeto
