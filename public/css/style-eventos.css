@@ -183,7 +183,7 @@ button{ font-family:inherit; cursor:pointer; }
       rgba(0, 0, 0, 0.397),
       rgba(255, 255, 255, 0.65)
     ),
-    url("/assets/evento-anterior-hero.jpg");
+    url("/public/images/assets/evento-anterior-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -201,7 +201,7 @@ button{ font-family:inherit; cursor:pointer; }
       rgba(0, 0, 0, 0.397),
       rgba(255, 255, 255, 0.65)
     ),
-    url("/assets/eventos-hero.jpg");
+    url("/public/images/assets/eventos-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -219,7 +219,7 @@ button{ font-family:inherit; cursor:pointer; }
       rgba(0, 0, 0, 0.397),
       rgba(255, 255, 255, 0.904)
     ),
-    url("/assets/eventos-hero.jpg");
+    url("/public/images/assets/eventos-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -234,15 +234,7 @@ button{ font-family:inherit; cursor:pointer; }
   pointer-events:none;
 }
 .hero-scan{
-  position:absolute; left:0; right:0; height:1px;
-  background:rgba(10,10,10,.35);
-  animation:scan 5.5s linear infinite;
-}
-@keyframes scan{
-  0%{ top:0%; opacity:0; }
-  8%{ opacity:.7; }
-  92%{ opacity:.7; }
-  100%{ top:100%; opacity:0; }
+  display:none;
 }
 .hero-inner{
   position:relative; z-index:2;
@@ -618,6 +610,7 @@ a.card:hover h3{ text-decoration:underline; text-underline-offset:.2em; }
   margin-top:1.1rem; color:var(--fog);
   font-family:var(--mono); font-size:.82rem; letter-spacing:.02em; line-height:1.6;
   max-width:70ch;
+  padding-left:40px;
 }
 .lightbox-close{
   position:absolute; top:clamp(1rem,4vw,2rem); right:clamp(1rem,4vw,2rem);
@@ -726,64 +719,64 @@ a.card:hover h3{ text-decoration:underline; text-underline-offset:.2em; }
 /* imagens dos eventos */
 
 #dtec .ph {
-  background-image: url("/assets/eventos-hero.jpg");
+  background-image: url("/public/images/assets/eventos-hero.jpg");
 }
 
 #fdp .ph {
-  background-image: url("/assets/evento-anterior-hero.jpg");
+  background-image: url("/public/images/assets/evento-anterior-hero.jpg");
 }
 
 #dtec2025 .ph {
-  background-image: url("/assets/dtec-2025-hero.jpg");
+  background-image: url("/public/images/assets/dtec-2025-hero.jpg");
 }
 
 #c4f .ph {
-  background-image: url("/assets/c4f-hero.jpg");
+  background-image: url("/public/images/assets/c4f-hero.jpg");
 }
 
 #csc .ph {
-  background-image: url("/assets/csc-hero.jpg");
+  background-image: url("/public/images/assets/csc-hero.jpg");
 }
 
 /* galeria */
 
 #g1 .ph--1 {
-  background-image: url("assets/evento-anterior-1.jpg");
+  background-image: url("/public/images/assets/evento-anterior-1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #g2 .ph--2 {
-  background-image: url("assets/evento-anterior-2.jpg");
+  background-image: url("/public/images/assets/evento-anterior-2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #g3 .ph--3 {
-  background-image: url("assets/evento-anterior-3.jpg");
+  background-image: url("/public/images/assets/evento-anterior-3.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #g4 .ph--4 {
-  background-image: url("assets/evento-anterior-4.jpg");
+  background-image: url("/public/images/assets/evento-anterior-4.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #g5 .ph--5 {
-  background-image: url("assets/evento-anterior-5.jpg");
+  background-image: url("/public/images/assets/evento-anterior-5.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #g6 .ph--6 {
-  background-image: url("assets/evento-anterior-6.jpg");
+  background-image: url("/public/images/assets/evento-anterior-6.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -819,7 +812,7 @@ a.card:hover h3{ text-decoration:underline; text-underline-offset:.2em; }
 
 .lightbox-figure {
   background-color: transparent !important;
-  background-size: contain !important;
+  background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
@@ -831,27 +824,27 @@ a.card:hover h3{ text-decoration:underline; text-underline-offset:.2em; }
 }
 
 .lightbox-figure.ph--1 {
-  background-image: url("assets/evento-anterior-1.jpg") !important;
+  background-image: url("/public/images/assets/evento-anterior-1.jpg") !important;
 }
 
 .lightbox-figure.ph--2 {
-  background-image: url("assets/evento-anterior-2.jpg") !important;
+  background-image: url("/public/images/assets/evento-anterior-2.jpg") !important;
 }
 
 .lightbox-figure.ph--3 {
-  background-image: url("assets/evento-anterior-3.jpg") !important;
+  background-image: url("/public/images/assets/evento-anterior-3.jpg") !important;
 }
 
 .lightbox-figure.ph--4 {
-  background-image: url("assets/evento-anterior-4.jpg") !important;
+  background-image: url("/public/images/assets/evento-anterior-4.jpg") !important;
 }
 
 .lightbox-figure.ph--5 {
-  background-image: url("assets/evento-anterior-5.jpg") !important;
+  background-image: url("/public/images/assets/evento-anterior-5.jpg") !important;
 }
 
 .lightbox-figure.ph--6 {
-  background-image: url("assets/evento-anterior-6.jpg") !important;
+  background-image: url("/public/images/assets/evento-anterior-6.jpg") !important;
 }
 
 /* =========================================================

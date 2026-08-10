@@ -1027,223 +1027,134 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================= */
 
   const parallaxTracks =
-    document.querySelectorAll(
-      '[data-parallax]'
-    );
+    document.querySelectorAll('[data-parallax]');
 
 
   if (parallaxTracks.length) {
 
-
     parallaxTracks.forEach(track => {
 
-
       const diamond =
-        track.querySelector(
-          '.parallax-diamond'
-        );
-
+        track.querySelector('.parallax-diamond');
 
       if (!diamond) return;
 
-
       if (prefersReduced) {
-
-        diamond.style.left =
-          '100%';
-
-
+        diamond.style.left = '100%';
         return;
-
       }
 
 
-      const duration =
-        1600;
+      let progress = 0;   // 0 = início, 1 = losango totalmente à direita
+      let active = false; // true enquanto a rolagem está presa nesta seção
+      let done = false;   // true quando o usuário já concluiu essa seção
+
+      const sensitivity = 0.0016; // ajuste este valor para controlar quanto cada scroll move o losango
 
 
-      let played =
-        false;
-
-
-      let locked =
-        false;
-
-
-      const blockWheel =
-        (event) => {
-
-          if (locked) {
-
-            event.preventDefault();
-
-          }
-
-        };
-
-
-      const blockTouch =
-        (event) => {
-
-          if (locked) {
-
-            event.preventDefault();
-
-          }
-
-        };
-
-
-      const blockKeys =
-        (event) => {
-
-
-          if (!locked) return;
-
-
-          if (
-            [
-              'ArrowDown',
-              'ArrowUp',
-              'PageDown',
-              'PageUp',
-              ' '
-            ]
-            .includes(
-              event.key
-            )
-          ) {
-
-            event.preventDefault();
-
-          }
-
-        };
-
-
-      function runAnimation() {
-
-
-        if (played) return;
-
-
-        played =
-          true;
-
-
-        locked =
-          true;
-
-
-        window.addEventListener(
-          'wheel',
-          blockWheel,
-          {
-            passive: false
-          }
-        );
-
-
-        window.addEventListener(
-          'touchmove',
-          blockTouch,
-          {
-            passive: false
-          }
-        );
-
-
-        window.addEventListener(
-          'keydown',
-          blockKeys
-        );
-
-
-        diamond.style.transition =
-          `left ${duration}ms cubic-bezier(.5,0,.25,1)`;
-
-
-        requestAnimationFrame(
-          () => {
-
-            diamond.style.left =
-              '100%';
-
-          }
-        );
-
-
-        setTimeout(
-          () => {
-
-
-            locked =
-              false;
-
-
-            window.removeEventListener(
-              'wheel',
-              blockWheel
-            );
-
-
-            window.removeEventListener(
-              'touchmove',
-              blockTouch
-            );
-
-
-            window.removeEventListener(
-              'keydown',
-              blockKeys
-            );
-
-
-          },
-          duration + 80
-        );
-
+      function setProgress(p) {
+        progress = Math.min(1, Math.max(0, p));
+        diamond.style.left = (progress * 100) + '%';
       }
 
 
-      const io =
-        new IntersectionObserver(
-          (entries) => {
+      function onWheel(event) {
+        if (!active) return;
+        event.preventDefault();
+
+        setProgress(progress + event.deltaY * sensitivity);
+
+        if (progress >= 1) release(true);
+        else if (progress <= 0) release(false);
+      }
 
 
-            entries.forEach(
-              entry => {
+      let touchStartY = null;
+
+      function onTouchStart(event) {
+        if (!active) return;
+        touchStartY = event.touches[0].clientY;
+      }
+
+      function onTouchMove(event) {
+        if (!active || touchStartY === null) return;
+        event.preventDefault();
+
+        const currentY = event.touches[0].clientY;
+        const delta = touchStartY - currentY;
+        touchStartY = currentY;
+
+        setProgress(progress + delta * sensitivity * 2.2);
+
+        if (progress >= 1) release(true);
+        else if (progress <= 0) release(false);
+      }
 
 
-                if (
-                  entry.isIntersecting &&
-                  entry.intersectionRatio >= 0.6
-                ) {
+      function onKeydown(event) {
+        if (!active) return;
+
+        if (['ArrowDown', 'PageDown', ' '].includes(event.key)) {
+          event.preventDefault();
+          setProgress(progress + 0.12);
+          if (progress >= 1) release(true);
+        }
+
+        if (['ArrowUp', 'PageUp'].includes(event.key)) {
+          event.preventDefault();
+          setProgress(progress - 0.12);
+          if (progress <= 0) release(false);
+        }
+      }
 
 
-                  runAnimation();
+      function engage() {
+        if (active || done) return;
+        active = true;
+
+        window.addEventListener('wheel', onWheel, { passive: false });
+        window.addEventListener('touchstart', onTouchStart, { passive: false });
+        window.addEventListener('touchmove', onTouchMove, { passive: false });
+        window.addEventListener('keydown', onKeydown);
+      }
 
 
-                  io.disconnect();
+      function release(finished) {
+        active = false;
+        touchStartY = null;
 
-                }
+        window.removeEventListener('wheel', onWheel);
+        window.removeEventListener('touchstart', onTouchStart);
+        window.removeEventListener('touchmove', onTouchMove);
+        window.removeEventListener('keydown', onKeydown);
 
-              }
-            );
+        if (finished) {
+          done = true;
+          io.disconnect();
+        }
+      }
 
-          },
-          {
-            threshold: [0.6]
-          }
-        );
 
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (done) return;
+
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+              engage();
+            } else {
+              release(false);
+            }
+          });
+        },
+        { threshold: [0.6] }
+      );
 
       io.observe(track);
 
     });
 
   }
-
 
   /* =========================================================
      DEBOUNCE
