@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -16,6 +16,116 @@
 <p><%= noticia.descricao %></p>
 <a href="/noticias">Voltar</a>
 
+</body>
+</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAITec marca presença na Feira das Profissões - RAITEC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <img src="imagens/logo-raitec.png" alt="RAITEC" class="logo">
+      <nav>
+        <a href="">INICIO</a>
+        <a href="#">QUEM SOMOS</a>
+        <a href="#">PROJETOS</a>
+        <a href="#">EVENTOS</a>
+        <a href="#">EXTENSÃO</a>
+        <a href="#">RÁPIDAS</a>
+        <a href="#">PROCESSO SELETIVO</a>
+        <a href="index.html" class="ativo">NOTÍCIAS</a>
+        <a href="#">CONTATO</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="topo-pagina">
+      <h1>Portal de Notícias</h1>
+      <div class="acoes">
+        <div class="busca">
+          <span></span>
+          <input type="text" placeholder="BUSCAR">
+        </div>
+        <button class="btn-entrar"> ENTRAR</button>
+      </div>
+    </div>
+
+    <section class="pagina-noticia">
+      <article class="conteudo-noticia">
+        <h2>RAITec marca presença na Feira das Profissões da UFC 2025</h2>
+        <p class="subtitulo">Nossa participação na feira das profissões foi um sucesso! Apresentamos nossos projetos a diversos estudantes, despertando o interesse pela tecnologia e inovação.</p>
+        
+        <div class="meta">
+          <span>Por Nome do Autor</span>
+          <span>10/06/2025</span>
+        </div>
+
+        <!-- ESPAÇO IMAGEM DA NOTICIA -->
+        <div class="imagem-noticia">
+          <img src="src/imagens/noticia-principal.png" alt="Feira das Profissões">
+          <span>Menbros do RAITec 2026</span>
+        </div>
+
+        <div class="texto">
+          <p>Donec vitae dui facilisi. In tincidunt vulputate. Sed pharetra sem tellus, commodo convallis velit consequat sed. Vivamus vel nulla in nisi tincidunt tincidunt pellentesque ut massa. Vestibulum rhoncus pellentesque purus in cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc accumsan nulla nec magna dapibus viverra vel nec justo. Cras facilisis augue velit, id placerat nibh luctus scelerisque.</p>
+          
+          <p>Praesent in augue lobortis, vehicula arcu ac, malesuada nunc. Nunc lobortis sem tellus in lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut sit amet quam. Maecenas imperdiet convallis elit quis suscipit. Maecenas at libero sit amet tellus viverra pretium. Etiam est massa, ornare ut vulputate eget, dictum eu tortor.</p>
+
+          <p>Donec vitae dui facilisi. In tincidunt vulputate. Sed pharetra sem tellus, commodo convallis velit consequat sed. Vivamus vel nulla in nisi tincidunt tincidunt pellentesque ut massa. Vestibulum rhoncus pellentesque purus in cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc accumsan nulla nec magna dapibus viverra vel nec justo. Cras facilisis augue velit, id placerat nibh luctus scelerisque.</p>
+        </div>
+      </article>
+
+      <!-- BARRA LATERAL -->
+      <aside class="sidebar">
+        <h4>Viu Isso?</h4>
+        <ul id="sidebar-lista">
+          <!-- Itens via JS -->
+        </ul>
+        <a href="index.html" class="mais">Mais</a>
+      </aside>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+        <div class="footer-left">
+        <img src="imagens/logo-footer.png" alt="RAITEC" class="footer-brand">
+      <div class="footer-info">
+        <p>© 2025 RAITEC — Todos os direitos reservados.</p>
+        <p>Contato: <a href="mailto:raitec@ufc.br">raitec@ufc.br</a></p>
+        </div>
+    </div>
+    
+      <div class="footer-social">
+      <a href="https://www.facebook.com/raitec.ufc/" title="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://br.linkedin.com/company/raitec-ufc" title="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://youtube.com/@rautecufc9945?si=SKym-AyV26X9_il" title="YouTube">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0b1228"/></svg>
+      </a>
+      <a href="https://www.instagram.com/raitec.ufc/" title="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -20,6 +20,229 @@
         </li>
     <% }) %>
     </ul>
+
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Notícias - RAITEC</title>
+    <link rel="stylesheet" href="css/noticias.css">
+</head>
+<body>
+
+  <%- include("../partials/header") %>
+
+  <main class="container">
+    <div class="topo-pagina">
+      <h1>Portal de Notícias</h1>
+      <div class="acoes">
+        <div class="busca">
+          <input type="text" placeholder="BUSCAR">
+        </div>
+        <button class="btn-entrar"> ENTRAR</button>
+      </div>
+    </div>
+
+
+    <section class="destaques">
+      <!-- NOTICIA PRINCIPAL -->
+      <a href="noticia.html?id=0" class="noticia-principal">
+           <img src="" alt=""> <!-- JS preenche -->
+        <div class="noticia-principal-conteudo">
+          <span class="tag"></span>
+          <h2></h2>
+          <p></p>
+       </div>
+      </a>
+
+
+
+      <!-- 2 NOTICIAS DESTAQUE -->
+      <div class="destaques-laterais">
+        <a href="noticia.html?id=1" class="noticia-destaque">
+          <img src="" alt=""> 
+          <div class="noticia-destaque-conteudo">
+            <span class="tag"></span>
+            <h3></h3>
+          </div>
+        </a>
+        
+        <a href="noticia.html?id=2" class="noticia-destaque">
+          <img src="" alt=""> 
+          <div class="noticia-destaque-conteudo">
+            <span class="tag"></span>
+            <h3></h3>
+          </div>
+        </a>
+      </div>
+
+    </section>
+
+
+
+
+
+
+
+
+    <section class="conteudo">
+      <!-- LISTA DE NOTICIAS -->
+
+
+      <div class="lista-noticias" id="lista-noticias">
+          <ul>
+        <% noticias.forEach(n => { %>
+            <li>
+            <a href="/noticias/<%= n.slug %>">
+
+                <img src="/images/noticias/<%= n.imagem %>" alt="<%= n.nome %>">
+                <strong><%= n.nome %></strong> 
+                <p><%= n.data %></p>
+
+            </a>
+            </li>
+        <% }) %>
+        </ul>
+      </div>
+
+
+
+
+      <!-- BARRA LATERAL -->
+      <aside class="sidebar">
+        <h4>Viu Isso?</h4>
+        <ul id="sidebar-lista">
+          <!-- Itens via JS -->
+        </ul>
+        <a href="index.html" class="mais">Mais</a>
+      </aside>
+    </section>
+  </main>
+
+
+
+
+
+
+
+  <footer>
+    <div class="container">
+        <div class="footer-left">
+        <img src="imagens/logo-footer.png" alt="RAITEC" class="footer-brand">
+      <div class="footer-info">
+        <p>© 2025 RAITEC — Todos os direitos reservados.</p>
+        <p>Contato: <a href="mailto:raitec@ufc.br">raitec@ufc.br</a></p>
+        </div>
+    </div>
+
+      <div class="footer-social">
+      <a href="https://www.facebook.com/raitec.ufc/" title="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="https://br.linkedin.com/company/raitec-ufc" title="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://youtube.com/@rautecufc9945?si=SKym-AyV26X9_il" title="YouTube">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0b1228"/></svg>
+      </a>
+      <a href="https://www.instagram.com/raitec.ufc/" title="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+
+    </div>
+  </footer>
+
+  <!--<script>
+    // Dados fake das noticias
+const noticias = [
+  {
+    tag: "Inscrições", 
+    titulo: "Processo Seletivo RAITEC 2026.2 - Inscrições Abertas!", 
+    desc: "Vem fazer parte do RAITEC e trabalhar com projetos reais.",
+    imagem: "src/imagens/processo-seletivo.png"
+  },
+  {
+    tag: "Feira das Profissões", 
+    titulo: "RAITEC marca presença na Feira das Profissões da UFC 2026", 
+    desc: "Nossa participação na feira das profissões foi um sucesso!",
+    imagem: "src/imagens/feira-2025.png" 
+  },
+  {
+    tag: "Robótica", 
+    titulo: "Equipe RAITEC promove competição de robôs seguidores de linha", 
+    desc: "Após meses de dedicação em 2 de outubro aconteceu o DTEC (Desafio Tecnologico)",
+    imagem: "src/imagens/robo-vencedor.png"
+  },
+  {
+    tag: "Oficina", 
+    titulo: "Oficina: Monte o seu Robô Seguidor de Linha", 
+    desc: "Aprenda do zero a montar e programar seu próprio robô.",
+    imagem: "src/imagens/oficina-robo.png"
+  },
+]
+
+// Preenche a lista de noticias
+const lista = document.getElementById('lista-noticias');
+noticias.forEach(n => {
+  lista.innerHTML += `
+    <div class="item-noticia">
+      <img src="${n.imagem}" alt="${n.titulo}">
+      <div class="info">
+        <span class="tag">${n.tag}</span>
+        <h3>${n.titulo}</h3>
+        <p>${n.desc}</p>
+      </div>
+    </div>
+  `
+});
+
+/// Pega a primeira como principal, as 2 seguintes como destaque
+const noticiaPrincipal = noticias[0];
+const destaques = noticias.slice(1, 3);
+
+// Preenche a noticia principal
+document.querySelector('.noticia-principal img').src = noticiaPrincipal.imagem;
+document.querySelector('.noticia-principal h2').textContent = noticiaPrincipal.titulo;
+document.querySelector('.noticia-principal p').textContent = noticiaPrincipal.desc;
+document.querySelector('.noticia-principal .tag').textContent = noticiaPrincipal.tag;
+
+// Preenche os 2 destaques
+document.querySelectorAll('.noticia-destaque').forEach((el, i) => {
+  el.querySelector('img').src = destaques[i].imagem;
+  el.querySelector('h3').textContent = destaques[i].titulo;
+  el.querySelector('.tag').textContent = destaques[i].tag;
+});
+
+
+// Preenche a sidebar "Viu Isso?" na pagina da noticia
+const sidebar = document.getElementById('sidebar-lista');
+if(sidebar){
+  const outrasNoticias = [
+    {titulo: "RAITEC vence hackathon da UFC", imagem: "imagens/hackathon.jpg"},
+    {titulo: "Novo laboratório de IA é inaugurado", imagem: "imagens/lab-ia.jpg"},
+    {titulo: "Alunos do RAITEC publicam artigo científico", imagem: "imagens/artigo.jpg"},
+    {titulo: "Parceria com empresas de tecnologia", imagem: "imagens/parceria.jpg"},
+  ]
+  
+  outrasNoticias.forEach(n => {
+    sidebar.innerHTML += `
+      <li>
+        <a href="#">
+          <img src="${n.imagem}" alt="${n.titulo}">
+          <span>${n.titulo}</span>
+        </a>
+      </li>
+    `
+  });
+}
+  </script>-->
+
 
 </body>
 </html>
