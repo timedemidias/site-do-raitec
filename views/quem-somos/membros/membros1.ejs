@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membros - RAITec</title>
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS de membros. colocar o caminho do css no href = "..." -->
+    <link rel="stylesheet" href="public/css/membros.css">
+</head>
+<body>
+
+    
+    <header class="cabecalho">
+        <div class="logo">
+            <!--aqui seria o caminho da pagina home(inicio) -->
+            <a href="#">
+                <img src="public/images/logo.png" alt="Logo RAITec">
+            </a>
+        </div>
+
+        <!-- Botão de abrir o menu (mobile) -->
+        <button class="btn-abrir-menu" id="btnAbrir">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Menu de Navegação -->
+        <nav id="menuMobile">
+            <div class="menu-container">
+                <button class="btn-fechar-menu" id="btnFechar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                
+                <ul>
+                    <!-- tem que botar o caminho pra pagina de cada coisa-->
+                    <li><a href="#">INÍCIO</a></li>
+                    <li><a href="#">QUEM SOMOS</a></li>
+                    <li><a href="#">PROJETOS</a></li>
+                    <li><a href="#">EVENTOS</a></li>
+                    <li><a href="#">EXTENSÃO</a></li>
+                    <li><a href="#">RAIPÉDIA</a></li>
+                    <li><a href="#">PROCESSO SELETIVO</a></li>
+                    <li><a href="#">NOTÍCIAS</a></li>
+                    <li><a href="#">CONTATO</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal dos Membros -->
+    <main class="membros-container">
+        
+        <div class="titulo-secao">
+            <h2>Membros - RAITec</h2>
+        </div>
+
+        <div class="search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Pesquisar por Nome, Eixo, Time ou Cargo">
+        </div>
+        
+        <div class="members-grid" id="membersGrid">
+            <!-- Cards gerados pelo JS -->
+        </div>
+
+    </main>
+
+   
+    <footer class="rodape">
+        <div class="rodape_caixa"> 
+            <div class="rodape_info">
+                <div class="rodape_logo"> 
+                    <!--aqui seria o caminho da pagina home(inicio) -->
+                    <a href="#">
+                        <img src="public/images/logo2.png" alt="logo 2 do raitec">
+                    </a>
+                </div>
+                <div class="rodape_texto">
+                    <p> © 2026 RAITEC — Todos os direitos reservados.</p>
+                    <p>Contato: <a href="mailto:raitec@ufc.br">raitec@ufc.br</a> </p>
+                </div>
+            </div>
+            <div class="rodape_social">
+                <a href="https://www.facebook.com/raitec.ufc/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/raitec-ufc/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@raitecufc9945" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/raitec.ufc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- colocar o caminho do .js da pagina membros-->
+    <script src="routes/quem-somos/membros/membros1.js"></script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+/* --- CONFIGURAÇÕES GERAIS E FONTES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+p, a, li, span {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+/* --- CABEÇALHO --- */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #05053f;
+    border-bottom: 1px solid #05053f;
+    height: 122px;
+}
+
+.btn-abrir-menu, .btn-fechar-menu {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    margin-left: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    font-family: 'Ubuntu', sans-serif;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PÁGINA DE MEMBROS  --- */
+.membros-container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 40px auto;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.titulo-secao {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #05053f;
+    font-size: 32px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Pesquisa */
+.search-container {
+    position: relative;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 15px 20px 15px 50px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    font-family: 'Cairo', sans-serif;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-container input:focus {
+    border-color: #05053f;
+    box-shadow: 0 0 8px rgba(5, 5, 63, 0.2);
+}
+
+.search-container i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+/* Cards */
+.members-grid {
+    display: grid;
+    /* auto-fit cria colunas responsivas automaticamente sem precisar de media query extra para a grade */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* O card agora é renderizado como uma tag <a> no JS, por isso text-decoration: none */
+.member-card {
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none; 
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.member-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.member-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Deixei quadrado para fotos de perfil, se preferir é só mudar pra 4/3 */
+    background-color: #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.member-name {
+    font-size: 22px;
+    color: #05053f;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.member-info {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.member-info strong {
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- RODAPÉ --- */
+.rodape {
+    background-color: #05053f;
+}
+
+.rodape_caixa {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 0%;
+}
+
+.rodape_info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rodape_logo img {
+    height: 150px;
+    padding-left: 15px;
+}
+
+.rodape_texto {
+    padding-right: 15px;
+}
+
+.rodape_texto p {
+    font-size: 20px;
+    color: #e5e7eb;
+    margin-bottom: 5px;
+}
+
+.rodape_texto a {
+    text-decoration: none;
+    color: #e5e7eb;
+}
+
+.rodape_social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: 100px;
+}
+
+.rodape_social a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.rodape_social a:hover {
+    background-color: #ccc;
+    color: #070B2B;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 900px) {
+    .cabecalho {
+        position: relative;
+    }
+
+    .btn-abrir-menu {
+        display: block;
+        font-size: 30px;
+        margin-right: 2rem;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+        transition: right 0.4s ease-in-out;
+    }
+
+    nav.ativo {
+        right: 0;
+    }
+
+    .menu-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .btn-fechar-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #24284b;
+        width: 71px;
+        height: 71px;
+        border-radius: 8px;
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        background-color: #05053f;
+        padding: 40px 30px;
+        border-radius: 8px;
+        width: 260px;
+        box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    nav ul li a {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .rodape_caixa {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+        gap: 24px;
+    }
+
+    .rodape_info {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .rodape_logo img {
+        height: 100px;
+        padding-left: 0;
+    }
+
+    .rodape_texto p {
+        font-size: 16px;
+    }
+
+    .rodape_social {
+        padding-right: 0px;
+        justify-content: center;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        padding-top: 20px;
+        width: 100%;
+    }
+}
