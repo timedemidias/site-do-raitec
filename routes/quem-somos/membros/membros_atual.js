@@ -1,10 +1,10 @@
 // Banco de dados atualizado com Eixo, Time, Cargo, link de perfil e foto
 
 // Aqui ficam todas as informações da página. 
-// nesse momento tem um modelo de "banco de dados" para a pagina "membros"(esse) 
-// e para a pagina "membro". como essa é só a parte basica de front-end deixei assim,
-// mas na versão final seria realmente bom ter um arquivo só para o "banco de dados" dos membros
-// uma dica pra isso é atribuir um "id" a cada pessoa
+// nesse momento tem um modelo de "banco de dados" para a pagina "membros"(esse) ...
+// ...e para a pagina "membro". como essa é só a parte basica de front-end deixei assim, ...
+// ...mas na versão final seria realmente bom ter um arquivo só para o "banco de dados" dos membros.
+// uma dica pra isso é atribuir um "id" a cada pessoa. como está no "antigo"
 const members = [
     { 
         nome: "Savlio",  // aqui é o nome da pessoa

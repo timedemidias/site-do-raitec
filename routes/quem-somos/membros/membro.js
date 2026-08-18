@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // "BANCO DE DADOS" DO PERFIL DO MEMBRO
 
     // Aqui ficam todas as informações da página. 
-    // nesse momento tem um modelo de "banco de dados" para a pagina "membro"(que é esse) 
-    // e para a pagina "membros"(que tem vários pessoas). como essa é só a parte basica de front-end deixei assim,
-    // mas na versão final seria realmente bom ter um arquivo só para o "banco de dados" dos membros
+    // nesse momento tem um modelo de "banco de dados" para a pagina "membro"(que é esse)...
+    // ...e para a pagina "membros"(que tem vários pessoas). como essa é só a parte basica de front-end deixei assim, ...
+    // ...mas na versão final seria realmente bom ter apenas um arquivo para o "banco de dados" sobre os membros 
     const dadosDoMembro = {
         nome: "Marcos Bertolini",      // aqui é o nome da pessoa
         eixo: "Apoio",                 // o eixo dela, se não tiverer deixar sem nada msm
         time: "Processos",             // o time dela, se não tiverer deixar sem nada msm
         cargo: "Membro Efetivo",       // opções: membro efetivo, coordenador(ai tu coloca do que aqui), gerente(...), diretor
-        foto: "#",// só colocar o caminho da foto
+        foto: "#",                     // só colocar o caminho da foto
         projetos: [
             { 
                 nome: "Reconhecimento de Libras (KNN/SVM)", 

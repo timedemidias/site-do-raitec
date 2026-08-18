@@ -1,5 +1,4 @@
-
-
+<!-- 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -21,4 +20,134 @@
 
 </body>
 </html>
+-->
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Membro - RAITec</title>
+    
+    <!-- Fontes  -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS  da página específica -->
+    <link rel="stylesheet" href="public/css/membro.css">
+</head>
+<body>
+
+    <!-- Cabeçalho  -->
+    <header class="cabecalho">
+        <div class="logo">
+            <!--aqui seria o caminho da pagina home(inicio) -->
+            <a href="#">
+                <img src="public/images/logo.png" alt="Logo RAITec">
+            </a>
+        </div>
+
+        <button class="btn-abrir-menu" id="btnAbrir">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="menuMobile">
+            <div class="menu-container">
+                <button class="btn-fechar-menu" id="btnFechar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <ul>
+                    <!-- tem que botar o caminho pra pagina de cada coisa-->
+                    <li><a href="#">INÍCIO</a></li>
+                    <li><a href="#">QUEM SOMOS</a></li>
+                    <li><a href="#">PROJETOS</a></li>
+                    <li><a href="#">EVENTOS</a></li>
+                    <li><a href="#">EXTENSÃO</a></li>
+                    <li><a href="#">RAIPÉDIA</a></li>
+                    <li><a href="#">PROCESSO SELETIVO</a></li>
+                    <li><a href="#">NOTÍCIAS</a></li>
+                    <li><a href="#">CONTATO</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal: Perfil do Membro -->
+    <main class="perfil-container">
+        
+        <!--"historico" das paginas acessadas até chegar nessa pagina específica (breadcrumb) -->
+        <div class="breadcrumb">
+            <!--aqui seria o caminho da pagina home(inicio) e o caminho especifico de cada pagina que a pessoa acessou até chegar nessa pagina  -->
+            <a href="#"><i class="fa-solid fa-house"></i></a> / 
+            <a href="#">quem somos</a> / 
+            <a href="#">membros</a> / 
+            <span id="breadcrumbNome">...</span>
+        </div>
+
+        <!-- Parte Superior: Imagem e Infos dinâmicas -->
+        <section class="perfil-topo">
+            <div class="perfil-img-box">
+                <img src="" alt="Foto do Membro" class="perfil-img" id="perfilFoto" onerror="this.style.display='none'">
+            </div>
+            
+            <div class="perfil-dados">
+                <div class="dado-destaque nome" id="perfilNome"></div>
+                <div class="dado-secundario">
+                    <div class="dado-destaque" id="perfilEixo"></div>
+                    <div class="dado-destaque" id="perfilTime"></div>
+                    <div class="dado-destaque" id="perfilCargo"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parte Inferior: Projetos Trabalhados -->
+        <section class="perfil-projetos">
+            <div class="projetos-titulo">PROJETOS TRABALHADOS:</div>
+            
+            <div class="carrossel-wrapper">
+                <button class="btn-seta" id="btnPrev" aria-label="Voltar">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                
+                <div class="projetos-track" id="projetosTrack">
+                    <!-- Projetos gerados automaticamente pelo JS -->
+                </div>
+
+                <button class="btn-seta" id="btnNext" aria-label="Avançar">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <div class="rodape_caixa"> 
+            <div class="rodape_info">
+                <div class="rodape_logo"> 
+                    <!--aqui seria o caminho da pagina home(inicio) -->
+                    <a href="#"><img src="public/images/logo2.png" alt="logo 2 do raitec"></a>
+                </div>
+                <div class="rodape_texto">
+                    <p> © 2026 RAITEC — Todos os direitos reservados.</p>
+                    <p>Contato: <a href="mailto:raitec@ufc.br">raitec@ufc.br</a> </p>
+                </div>
+            </div>
+            <div class="rodape_social">
+                <a href="https://www.facebook.com/raitec.ufc/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/raitec-ufc/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@raitecufc9945" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/raitec.ufc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- caminho do .js da pagina "membro"-->
+    <script src="routes/quem-somos/membros/membro.js"></script>
+</body>
+</html>

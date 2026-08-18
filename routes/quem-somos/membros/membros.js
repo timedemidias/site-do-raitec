@@ -1,9 +1,14 @@
+
+// OBSERVAÇÃO: eu vou ignorar esse banco de dados já feito e colocar o que eu fiz, mas tem que pensar em unificar o banco de dados dos membros(para servir tanto para a pagina "MEMBROS" quanto a " MEMBRO")
+
+
+/*
+
 const express = require("express");
 const router = express.Router();
 const db = require("../../../services/firebaseAdmin");
 
 
-/** 
 // DADOS MOCK (temporário)
 const membros = [
   {
@@ -448,7 +453,6 @@ router.get("/membros/:slug", async (req, res) => {
 });
 
 module.exports = router;
-
 
 
 
