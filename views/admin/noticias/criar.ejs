@@ -1,0 +1,60 @@
+<h1>Criar notícia</h1>
+
+<form
+  action="/admin/noticias/criar"
+  method="POST"
+>
+
+  <!-- NOME -->
+  <input
+    type="text"
+    name="nome"
+    placeholder="Nome"
+  >
+
+  <br><br>
+
+
+  <!-- SLUG -->
+  <input
+    type="text"
+    name="slug"
+    placeholder="Slug"
+  >
+
+  <br><br>
+
+
+  <!-- IMAGEM -->
+  <input
+    type="text"
+    name="imagem"
+    placeholder="URL da imagem"
+  >
+
+  <br><br>
+
+
+  <!-- DESCRIÇÃO -->
+  <textarea
+    name="descricao"
+    placeholder="Descrição"
+  ></textarea>
+
+  <br><br>
+
+
+  <!-- CONTEÚDO -->
+  <textarea
+    name="conteudo"
+    placeholder="Conteúdo"
+  ></textarea>
+
+  <br><br>
+
+
+  <button type="submit">
+    Criar
+  </button>
+
+</form>

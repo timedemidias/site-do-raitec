@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/css/admin.css">
+
+<div class="admin-container">
+
+  <!-- TOPO -->
+  <div class="page-header">
+
+    <h1>Notícias</h1>
+
+    
+      href="/admin/noticias/criar"
+      class="btn btn-primary"
+    >
+      Nova notícia
+    </a>
+
+  </div>
+
+
+  <!-- GRID -->
+  <div class="admin-grid">
+
+    <% noticias.forEach(noticia => { %>
+
+      <div class="card">
+
+        <h2>
+          <%= noticia.nome %>
+        </h2>
+
+        <p>
+          <%= noticia.data %>
+        </p>
+
+        <!-- AÇÕES -->
+        <div class="card-actions">
+
+          
+            href="/admin/noticias/<%= noticia.id %>/editar"
+            class="btn btn-primary"
+          >
+            Editar
+          </a>
+
+          <form
+            action="/admin/noticias/<%= noticia.id %>/deletar"
+            method="POST"
+          >
+
+            <button
+              type="submit"
+              class="btn btn-danger"
+            >
+              Excluir
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    <% }) %>
+
+  </div>
+
+</div>

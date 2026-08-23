@@ -1,0 +1,63 @@
+<h1>Editar notícia</h1>
+
+<form
+  action="/admin/noticias/<%= noticia.id %>/editar"
+  method="POST"
+>
+
+  <!-- NOME -->
+  <input
+    type="text"
+    name="nome"
+    value="<%= noticia.nome %>"
+    placeholder="Nome"
+  >
+
+  <br><br>
+
+
+  <!-- SLUG -->
+  <input
+    type="text"
+    name="slug"
+    value="<%= noticia.slug %>"
+    placeholder="Slug"
+  >
+
+  <br><br>
+
+
+  <!-- IMAGEM -->
+  <input
+    type="text"
+    name="imagem"
+    value="<%= noticia.imagem %>"
+    placeholder="URL da imagem"
+  >
+
+  <br><br>
+
+
+  <!-- DESCRIÇÃO -->
+  <textarea
+    name="descricao"
+    placeholder="Descrição"
+  ><%= noticia.descricao %></textarea>
+
+  <br><br>
+
+
+  <!-- CONTEÚDO -->
+  <textarea
+    name="conteudo"
+    placeholder="Conteúdo"
+  ><%= noticia.conteudo %></textarea>
+
+  <br><br>
+
+
+  <button type="submit">
+    Salvar
+  </button>
+
+</form>
