@@ -217,5 +217,3 @@ router.post("/noticias/:id/deletar", async (req, res) => {
 
 
 module.exports = router;
-
-
