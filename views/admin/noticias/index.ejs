@@ -7,12 +7,10 @@
 
     <h1>Notícias</h1>
 
-    
+    <a
       href="/admin/noticias/criar"
       class="btn btn-primary"
-    >
-      Nova notícia
-    </a>
+    > Nova notícia </a>
 
   </div>
 
@@ -35,24 +33,18 @@
         <!-- AÇÕES -->
         <div class="card-actions">
 
-          
+          <a
             href="/admin/noticias/<%= noticia.id %>/editar"
             class="btn btn-primary"
-          >
-            Editar
-          </a>
+          > Editar </a>
 
           <form
             action="/admin/noticias/<%= noticia.id %>/deletar"
-            method="POST"
-          >
+            method="POST" >
 
             <button
               type="submit"
-              class="btn btn-danger"
-            >
-              Excluir
-            </button>
+              class="btn btn-danger">Excluir</button>
 
           </form>
 
