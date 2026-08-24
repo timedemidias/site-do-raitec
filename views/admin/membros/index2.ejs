@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/css/admin.css">
+
+<div class="admin-container">
+  <!-- TOPO -->
+  <div class="page-header">
+    <h1>Membros</h1>
+    <a href="/admin/membros/criar" class="btn btn-primary">Novo membro</a>
+  </div>
+
+  <!-- GRID -->
+  <div class="admin-grid">
+    <% membros.forEach(membro => { %>
+      <div class="card">
+        <h2><%= membro.nome %> - <%= membro.cargo %></h2>
+        
+        <!-- AÇÕES -->
+        <div class="card-actions">
+          <a href="/admin/membros/<%= membro.id %>/editar" class="btn btn-primary">Editar</a>
+          <form action="/admin/membros/<%= membro.id %>/deletar" method="POST">
+            <button type="submit" class="btn btn-danger">Excluir</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>

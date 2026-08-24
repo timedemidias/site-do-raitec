@@ -1,0 +1,59 @@
+<h1>Criar membro</h1>
+
+<form action="/admin/membros/criar" method="POST">
+
+  <!-- NOME -->
+  <input type="text" name="nome" placeholder="Nome" required>
+  <br><br>
+
+  <!-- SLUG -->
+  <input type="text" name="slug" placeholder="Slug (ex: marcos-silva)">
+  <br><br>
+
+  <!-- FOTO -->
+  <input type="text" name="foto" placeholder="URL da foto">
+  <br><br>
+
+  <!-- EIXO -->
+  <select name="eixo">
+    <option value="Apoio">Apoio</option>
+    <option value="Inovação">Inovação</option>
+    <option value="Técnico">Técnico</option>
+  </select>
+  <br><br>
+
+  <!-- TIME -->
+  <select name="time">
+    <option value="">Nenhum</option>
+    <option value="Processos">Processos</option>
+    <option value="Mídias">Mídias</option>
+  </select>
+  <br><br>
+
+  <!-- DESCRIÇÃO -->
+  <textarea name="descricao" placeholder="Descrição"></textarea>
+  <br><br>
+
+  <!-- PROJETOS -->
+  <input type="text" name="projetos" placeholder="Projetos separados por vírgula">
+  <br><br>
+
+  <!-- ATIVO -->
+  <label>
+    <input type="checkbox" name="ativo" checked> Ativo
+  </label>
+  <br><br>
+
+  <!-- CARGO -->
+  <label>Cargo</label><br>
+  <select name="cargo">
+    <option value="Membro Efetivo">Membro Efetivo</option>
+    <option value="Coordenador">Coordenador</option>
+    <option value="Gerente">Gerente</option>
+    <option value="Diretor">Diretor</option>
+  </select>
+  <br><br>
+
+  <button type="submit">Criar</button>
+
+</form>

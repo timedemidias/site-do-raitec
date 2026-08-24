@@ -1,0 +1,59 @@
+<h1>Editar membro</h1>
+
+<form action="/admin/membros/<%= membro.id %>/editar" method="POST">
+
+  <!-- NOME -->
+  <input type="text" name="nome" value="<%= membro.nome %>" placeholder="Nome" required>
+  <br><br>
+
+  <!-- SLUG -->
+  <input type="text" name="slug" value="<%= membro.slug %>" placeholder="Slug">
+  <br><br>
+
+  <!-- FOTO -->
+  <input type="text" name="foto" value="<%= membro.foto %>" placeholder="URL da foto">
+  <br><br>
+
+  <!-- EIXO -->
+  <select name="eixo">
+    <option value="Apoio" <%= membro.eixo === 'Apoio' ? 'selected' : '' %>>Apoio</option>
+    <option value="Inovação" <%= membro.eixo === 'Inovação' ? 'selected' : '' %>>Inovação</option>
+    <option value="Técnico" <%= membro.eixo === 'Técnico' ? 'selected' : '' %>>Técnico</option>
+  </select>
+  <br><br>
+
+  <!-- TIME -->
+  <select name="time">
+    <option value="" <%= membro.time === '' ? 'selected' : '' %>>Nenhum</option>
+    <option value="Processos" <%= membro.time === 'Processos' ? 'selected' : '' %>>Processos</option>
+    <option value="Mídias" <%= membro.time === 'Mídias' ? 'selected' : '' %>>Mídias</option>
+  </select>
+  <br><br>
+
+  <!-- DESCRIÇÃO -->
+  <textarea name="descricao" placeholder="Descrição"><%= membro.descricao %></textarea>
+  <br><br>
+
+  <!-- PROJETOS -->
+  <input type="text" name="projetos" value="<%= membro.projetos ? membro.projetos.join(', ') : '' %>" placeholder="Projetos separados por vírgula">
+  <br><br>
+
+  <!-- ATIVO -->
+  <label>
+    <input type="checkbox" name="ativo" <%= membro.ativo ? 'checked' : '' %>> Ativo
+  </label>
+  <br><br>
+
+  <!-- CARGO -->
+  <label>Cargo</label><br>
+  <select name="cargo">
+    <option value="Membro Efetivo" <%= membro.cargo === 'Membro Efetivo' ? 'selected' : '' %>>Membro Efetivo</option>
+    <option value="Coordenador" <%= membro.cargo === 'Coordenador' ? 'selected' : '' %>>Coordenador</option>
+    <option value="Gerente" <%= membro.cargo === 'Gerente' ? 'selected' : '' %>>Gerente</option>
+    <option value="Diretor" <%= membro.cargo === 'Diretor' ? 'selected' : '' %>>Diretor</option>
+  </select>
+  <br><br>
+
+  <button type="submit">Salvar Alterações</button>
+
+</form>

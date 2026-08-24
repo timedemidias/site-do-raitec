@@ -83,14 +83,14 @@ router.post("/membros/criar", async (req, res) => {
 
     const {
       nome,
-      slug,
+      slug, // o que é "slug"? é o nome do membro em letras minúsculas e sem espaços, usado para criar URLs amigáveis
       foto,
       eixo,
       time,
-      descricao,
+      descricao, //deixar isso em prol da resenha
       projetos,
-      ativo,
-      coordenador
+      ativo,     // só faz sentido ter isso se tiver uma parte voltada aos membros 
+      coordenador   // eem vez de "coordenador" colocar "cargos" (membro efetivo, coordenador, gerente, diretor) 
     } = req.body;
 
 
