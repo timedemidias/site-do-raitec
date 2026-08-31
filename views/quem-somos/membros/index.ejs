@@ -126,6 +126,38 @@
     </footer>
 
     <!-- colocar o caminho do .js da pagina membros-->
-    <script src="routes/quem-somos/membros/membros_atual.js"></script>
+    <!--<script src="routes/quem-somos/membros/membros_atual.js"></script>
+    esse jeito era se o que precisasse de .js ficava em um arquivo separado, agora eu coloquei tudo aqui, tirando a parte do banco de dados -->
+
+
+    <!--parte do javascript -->
+    
+    <script>
+        // Lógica do Motor de Busca
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.member-card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (event) => {
+                const searchTerm = event.target.value.toLowerCase();
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+                });
+            });
+        }
+
+        // Lógica do Menu Mobile
+        const btnAbrir = document.getElementById('btnAbrir');
+        const btnFechar = document.getElementById('btnFechar');
+        const menuMobile = document.getElementById('menuMobile');
+
+        if (btnAbrir && btnFechar && menuMobile) {
+            btnAbrir.addEventListener('click', () => menuMobile.classList.add('ativo'));
+            btnFechar.addEventListener('click', () => menuMobile.classList.remove('ativo'));
+        }
+    </script>
+</body>
+</html>
 </body>
 </html>

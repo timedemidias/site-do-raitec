@@ -148,6 +148,80 @@
     </footer>
     
     <!-- caminho do .js da pagina "membro"-->
-    <script src="routes/quem-somos/membros/membro.js"></script>
+    <!--<script src="routes/quem-somos/membros/membro.js"></script>
+    esse jeito era se o que precisasse de .js ficava em um arquivo separado, agora eu coloquei tudo aqui, tirando a parte do banco de dados -->
+
+
+    <!--parte do javascript -->
+
+
+
+    <script>
+        // Lógica do Menu Mobile
+        const btnAbrir = document.getElementById('btnAbrir');
+        const btnFechar = document.getElementById('btnFechar');
+        const menuMobile = document.getElementById('menuMobile');
+
+        if (btnAbrir && btnFechar && menuMobile) {
+            btnAbrir.addEventListener('click', () => menuMobile.classList.add('ativo'));
+            btnFechar.addEventListener('click', () => menuMobile.classList.remove('ativo'));
+        }
+
+        // Lógica do Carrossel de Projetos
+        const track = document.getElementById('projetosTrack');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+
+        if (track && btnPrev && btnNext) {
+            let isScrolling = false;
+
+            function animarScroll(elemento, destino, duracao) {
+                if (isScrolling) return;
+                isScrolling = true;
+                const inicio = elemento.scrollLeft;
+                const distancia = destino - inicio;
+                let tempoInicio = null;
+
+                function animacao(tempoAtual) {
+                    if (tempoInicio === null) tempoInicio = tempoAtual;
+                    const tempoDecorrido = tempoAtual - tempoInicio;
+                    let progresso = Math.min(tempoDecorrido / duracao, 1);
+                    const suavizacao = progresso < 0.5 
+                        ? 2 * progresso * progresso 
+                        : 1 - Math.pow(-2 * progresso + 2, 2) / 2;
+                    
+                    elemento.scrollLeft = inicio + (distancia * suavizacao);
+
+                    if (tempoDecorrido < duracao) {
+                        requestAnimationFrame(animacao);
+                    } else {
+                        isScrolling = false; 
+                    }
+                }
+                requestAnimationFrame(animacao);
+            }
+
+            btnNext.addEventListener('click', () => {
+                const card = track.querySelector('.projeto-card');
+                if (!card) return;
+                const tamanhoPasso = card.offsetWidth + 30; 
+                const destinoFinal = Math.ceil((track.scrollLeft + 1) / tamanhoPasso) * tamanhoPasso;
+                animarScroll(track, destinoFinal, 600); 
+            });
+            
+            btnPrev.addEventListener('click', () => {
+                const card = track.querySelector('.projeto-card');
+                if (!card) return;
+                const tamanhoPasso = card.offsetWidth + 30;
+                let destinoFinal = Math.floor((track.scrollLeft - 1) / tamanhoPasso) * tamanhoPasso;
+                if (destinoFinal < 0) destinoFinal = 0;
+                animarScroll(track, destinoFinal, 600);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
 </body>
 </html>
