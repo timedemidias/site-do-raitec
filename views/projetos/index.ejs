@@ -1,47 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>RAITec</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos - RAITec</title>
+    <!-- css do swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="/css/projetos.css">
 </head>
 <body>
 
-  <%- include("../partials/header") %>
+<%- include("../partials/header") %>
 
-  <h1>Projetos</h1>
+<div class="container">
+    <h1>Projetos</h1>
 
-<h2>Projetos Ativos</h2>
-<ul>
-  <% ativos.forEach(p => { %>
-    <li>
-      <a href="/projetos/<%= p.id %>">
-        <strong><%= p.nome %></strong>
-      </a>
-    </li>
-  <% }) %>
-</ul>
+    <hr>
 
-<h2>Projetos Arquivados</h2>
-<ul>
-  <% arquivados.forEach(p => { %>
-    <li>
-      <a href="/projetos/<%= p.id %>">
-        <strong><%= p.nome %></strong>
-      </a>
-    </li>
-  <% }) %>
-</ul>
+    <section class="secao-projetos">
+        <h2>Projetos Ativos</h2>
+        <% if (ativos && ativos.length > 0) { %>
+            <div class="swiper projetos" id="swiper-ativos">
+                <div class="swiper-wrapper">
+                    <% ativos.forEach(projeto => { %>
+                        <div class="swiper-slide">
+                            <a href="<%= projeto.id ? '/projetos/' + projeto.id : '#' %>" class="card-projeto">
 
-<h2>Projetos Finalizados</h2>
-<ul>
-  <% finalizados.forEach(p => { %>
-    <li>
-      <a href="/projetos/<%= p.id %>">
-        <strong><%= p.nome %></strong>
-      </a>
-    </li>
-  <% }) %>
-</ul>
+                                <div class="card-imagem">
+                                    <% if (projeto.imagens && projeto.imagens.length > 0 && projeto.imagens[0]) { %>
+                                        <img
+                                                src="<%= projeto.imagens[0] %>"
+                                                alt="<%= projeto.nome || 'Projeto sem nome' %>"
+                                                onerror="this.onerror=null; this.src='/images/placeholder.jpg';"
+                                        >
+                                    <% } else { %>
+                                        <img
+                                                src="/images/placeholder.jpg"
+                                                alt="Imagem não disponível"
+                                        >
+                                    <% } %>
+                                </div>
+
+                                <div class="card-info">
+                                    <h3>
+                                        <%= projeto.nome || 'Projeto sem nome' %>
+                                    </h3>
+
+                                    <span class="card-eixo">
+                <%= projeto.eixoTecnico || 'Eixo não informado' %>
+            </span>
+                                </div>
+
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        <% } else { %>
+            <p class="sem-projetos">Nenhum projeto ativo no momento.</p>
+        <% } %>
+    </section>
+
+    <hr>
+
+    <section class="secao-projetos">
+        <h2>Projetos Finalizados</h2>
+        <% if (finalizados && finalizados.length > 0) { %>
+            <div class="swiper projetos" id="swiper-finalizados">
+                <div class="swiper-wrapper">
+                    <% finalizados.forEach(projeto => { %>
+                        <div class="swiper-slide">
+                            <a href="<%= projeto.id ? '/projetos/' + projeto.id : '#' %>" class="card-projeto">
+
+                                <div class="card-imagem">
+                                    <% if (projeto.imagens && projeto.imagens.length > 0 && projeto.imagens[0]) { %>
+                                        <img
+                                                src="<%= projeto.imagens[0] %>"
+                                                alt="<%= projeto.nome || 'Projeto sem nome' %>"
+                                                onerror="this.onerror=null; this.src='/images/placeholder.jpg';"
+                                        >
+                                    <% } else { %>
+                                        <img
+                                                src="/images/placeholder.jpg"
+                                                alt="Imagem não disponível"
+                                        >
+                                    <% } %>
+                                </div>
+
+                                <div class="card-info">
+                                    <h3>
+                                        <%= projeto.nome || 'Projeto sem nome' %>
+                                    </h3>
+
+                                    <span class="card-eixo">
+                <%= projeto.eixoTecnico || 'Eixo não informado' %>
+            </span>
+                                </div>
+
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        <% } else { %>
+            <p class="sem-projetos">Nenhum projeto finalizado no momento.</p>
+        <% } %>
+    </section>
+
+    <hr>
+
+    <section class="secao-projetos">
+        <h2>Projetos Arquivados</h2>
+        <% if (arquivados && arquivados.length > 0) { %>
+            <div class="swiper projetos" id="swiper-arquivados">
+                <div class="swiper-wrapper">
+                    <% arquivados.forEach(projeto => { %>
+                        <div class="swiper-slide">
+                            <a href="<%= projeto.id ? '/projetos/' + projeto.id : '#' %>" class="card-projeto">
+
+                                <div class="card-imagem">
+                                    <% if (projeto.imagens && projeto.imagens.length > 0 && projeto.imagens[0]) { %>
+                                        <img
+                                                src="<%= projeto.imagens[0] %>"
+                                                alt="<%= projeto.nome || 'Projeto sem nome' %>"
+                                                onerror="this.onerror=null; this.src='/images/placeholder.jpg';"
+                                        >
+                                    <% } else { %>
+                                        <img
+                                                src="/images/placeholder.jpg"
+                                                alt="Imagem não disponível"
+                                        >
+                                    <% } %>
+                                </div>
+
+                                <div class="card-info">
+                                    <h3>
+                                        <%= projeto.nome || 'Projeto sem nome' %>
+                                    </h3>
+
+                                    <span class="card-eixo">
+                <%= projeto.eixoTecnico || 'Eixo não informado' %>
+            </span>
+                                </div>
+
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        <% } else { %>
+            <p class="sem-projetos">Nenhum projeto arquivado no momento.</p>
+        <% } %>
+    </section>
+
+    <hr>
+</div>
+
+<%- include("../partials/footer") %>
+
+<!-- js do swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // slider de projetos
+    document.querySelectorAll('.swiper.projetos').forEach(function (container) {
+        new Swiper(container, {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
