@@ -1,270 +1,356 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= projeto.nome %> - RAITec</title>
-  <link rel="stylesheet" href="/css/projeto.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= projeto.nome %> - RAITec</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <link rel="stylesheet" href="/css/projeto.css">
 </head>
 <body>
 
-  <%- include("../partials/header") %>
+<%- include("../partials/header") %>
 
-  <main class="projeto-container">
-    
+<main class="projeto-container">
+
     <!-- Seção Hero -->
     <section class="projeto-hero">
-      <div class="hero-content">
-        <h1><%= projeto.nome %></h1>
-        <p class="eixo-badge"><strong>Eixo:</strong> <%= projeto.eixoTecnico %></p>
-        <p class="objetivo"><%= projeto.objetivo %></p>
-      </div>
-      
-      <% if (projeto.imagens && projeto.imagens.length > 0) { %>
-        <div class="hero-imagem">
-          <img src="<%= projeto.imagens[0] %>" alt="<%= projeto.nome %>">
+        <div class="hero-content">
+            <h1><%= projeto.nome %></h1>
+            <p class="eixo-badge"><strong>Eixo:</strong> <%= projeto.eixoTecnico %></p>
+            <p class="objetivo"><%= projeto.objetivo %></p>
         </div>
-      <% } %>
+
+        <% if (projeto.imagens && projeto.imagens.length > 0) { %>
+            <div class="hero-imagem">
+                <a href="<%= projeto.imagens[0] %>" class="glightbox" data-gallery="hero">
+                    <img src="<%= projeto.imagens[0] %>" alt="<%= projeto.nome %>">
+                </a>
+            </div>
+        <% } %>
     </section>
 
     <!-- Navegação Interna -->
     <nav class="toc-nav">
-      <div class="toc-container">
-        <h3>Conteúdo</h3>
-        <ul>
-          <li><a href="#descricao">Descrição</a></li>
-          <li><a href="#funcionamento">Funcionamento</a></li>
-          <li><a href="#componentes">Componentes</a></li>
-          <li><a href="#tecnologias">Tecnologias</a></li>
-          <% if (projeto.imagens && projeto.imagens.length > 1) { %>
-            <li><a href="#galeria">Galeria</a></li>
-          <% } %>
-          <% if (projeto.video) { %>
-            <li><a href="#video">Vídeo</a></li>
-          <% } %>
-          <li><a href="#resultados">Resultados</a></li>
-        </ul>
-      </div>
+        <div class="toc-container">
+            <div class="toc-header">
+                <h3>Conteúdo</h3>
+                <button type="button" class="toc-toggle" aria-label="Abrir índice" aria-expanded="false" aria-controls="toc-lista">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <ul id="toc-lista">
+                <li><a href="#descricao">Descrição</a></li>
+                <li><a href="#funcionamento">Funcionamento</a></li>
+                <li><a href="#componentes">Componentes</a></li>
+                <li><a href="#tecnologias">Tecnologias</a></li>
+                <% if (projeto.equipe && projeto.equipe.length > 0) { %>
+                    <li><a href="#equipe">Equipe</a></li>
+                <% } %>
+                <% if ((projeto.imagens && projeto.imagens.length > 1) || projeto.video) { %>
+                    <li><a href="#galeria">Galeria</a></li>
+                <% } %>
+                <li><a href="#resultados">Resultados</a></li>
+            </ul>
+        </div>
     </nav>
 
     <div class="projeto-content">
 
-      <!-- DESCRIÇÃO -->
-      <section id="descricao" class="projeto-secao">
-        <h2>Descrição</h2>
-        <div class="secao-content">
-          <p><%= projeto.descricao %></p>
-          
-          <% if (projeto.problema) { %>
-            <div class="destaque problema">
-              <h3>Problema Resolvido</h3>
-              <p><%= projeto.problema %></p>
-            </div>
-          <% } %>
-          
-          <% if (projeto.justificativa) { %>
-            <div class="destaque justificativa">
-              <h3>Justificativa</h3>
-              <p><%= projeto.justificativa %></p>
-            </div>
-          <% } %>
-        </div>
-      </section>
+        <!-- DESCRIÇÃO -->
+        <section id="descricao" class="projeto-secao">
+            <h2>Descrição</h2>
+            <div class="secao-content">
+                <p><%= projeto.descricao %></p>
 
-      <!-- FUNCIONAMENTO -->
-      <section id="funcionamento" class="projeto-secao">
-        <h2>Funcionamento</h2>
-        <div class="secao-content">
-          <p><%= projeto.funcionamento %></p>
-          
-          <% if (projeto.fluxo && projeto.fluxo.length > 0) { %>
-            <div class="fluxo">
-              <h3>Fluxo de Operação</h3>
-              <ol class="fluxo-list">
-                <% projeto.fluxo.forEach((passo, index) => { %>
-                  <li>
-                    <strong><%= passo.titulo %></strong>
-                    <p><%= passo.descricao %></p>
-                  </li>
-                <% }); %>
-              </ol>
-            </div>
-          <% } %>
-          
-          <% if (projeto.logica) { %>
-            <div class="logica">
-              <h3>Lógica Principal</h3>
-              <p><%= projeto.logica %></p>
-            </div>
-          <% } %>
-        </div>
-      </section>
+                <% if (projeto.problema) { %>
+                    <div class="destaque problema">
+                        <h3>Problema Resolvido</h3>
+                        <p><%= projeto.problema %></p>
+                    </div>
+                <% } %>
 
-      <!-- COMPONENTES -->
-      <section id="componentes" class="projeto-secao">
-        <h2>Componentes / Materiais</h2>
-        <div class="secao-content">
-          <% if (projeto.componentes && projeto.componentes.length > 0) { %>
-            <div class="componentes-grid">
-              <% projeto.componentes.forEach(componente => { %>
-                <div class="componente-card">
-                  <h3><%= componente.nome %></h3>
-                  <p class="quantidade">Qtd: <strong><%= componente.quantidade || 1 %></strong></p>
-                  <p class="descricao"><%= componente.descricao %></p>
-                  <% if (componente.funcao) { %>
-                    <p class="funcao"><strong>Função:</strong> <%= componente.funcao %></p>
-                  <% } %>
-                  <% if (componente.preco) { %>
-                    <p class="preco">R$ <%= componente.preco %></p>
-                  <% } %>
-                </div>
-              <% }); %>
+                <% if (projeto.justificativa) { %>
+                    <div class="destaque justificativa">
+                        <h3>Justificativa</h3>
+                        <p><%= projeto.justificativa %></p>
+                    </div>
+                <% } %>
             </div>
-            
-            <% if (projeto.custoTotal) { %>
-              <div class="custo-total">
-                <p><strong>Custo Total Estimado:</strong> R$ <%= projeto.custoTotal %></p>
-              </div>
-            <% } %>
-          <% } %>
-        </div>
-      </section>
-
-      <!-- TECNOLOGIAS -->
-      <section id="tecnologias" class="projeto-secao">
-        <h2>Tecnologias Utilizadas</h2>
-        <div class="secao-content">
-          <% if (projeto.tecnologias && projeto.tecnologias.length > 0) { %>
-            <div class="tecnologias-grid">
-              <% projeto.tecnologias.forEach(tech => { %>
-                <div class="tech-card">
-                  <span class="tech-name"><%= tech.nome %></span>
-                  <% if (tech.tipo) { %>
-                    <span class="tech-tipo"><%= tech.tipo %></span>
-                  <% } %>
-                  <% if (tech.descricao) { %>
-                    <p><%= tech.descricao %></p>
-                  <% } %>
-                </div>
-              <% }); %>
-            </div>
-          <% } %>
-          
-          <% if (projeto.linguagens) { %>
-            <div class="linguagens">
-              <h3>Linguagens de Programação</h3>
-              <div class="tag-list">
-                <% projeto.linguagens.forEach(lang => { %>
-                  <span class="tag"><%= lang %></span>
-                <% }); %>
-              </div>
-            </div>
-          <% } %>
-        </div>
-      </section>
-
-      <!-- RESULTADOS -->
-      <section id="resultados" class="projeto-secao">
-        <h2>Resultados e Perspectivas</h2>
-        <div class="secao-content">
-          <% if (projeto.resultados) { %>
-            <div class="resultados-box">
-              <h3>Resultados Alcançados</h3>
-              <p><%= projeto.resultados %></p>
-            </div>
-          <% } %>
-          
-          <% if (projeto.melhorias && projeto.melhorias.length > 0) { %>
-            <div class="melhorias-box">
-              <h3>Possíveis Melhorias</h3>
-              <ul>
-                <% projeto.melhorias.forEach(melhoria => { %>
-                  <li><%= melhoria %></li>
-                <% }); %>
-              </ul>
-            </div>
-          <% } %>
-          
-          <% if (projeto.aplicacoes && projeto.aplicacoes.length > 0) { %>
-            <div class="aplicacoes-box">
-              <h3>Aplicações Futuras</h3>
-              <ul>
-                <% projeto.aplicacoes.forEach(app => { %>
-                  <li><%= app %></li>
-                <% }); %>
-              </ul>
-            </div>
-          <% } %>
-        </div>
-      </section>
-
-      <!-- INFORMAÇÕES ADICIONAIS -->
-      <section class="projeto-secao info-adicional">
-        <h2>Informações Adicionais</h2>
-        <div class="secao-content">
-          <div class="info-grid">
-            <% if (projeto.eixoTecnico) { %>
-              <div class="info-item">
-                <strong>Eixo Técnico</strong>
-                <p><%= projeto.eixoTecnico %></p>
-              </div>
-            <% } %>
-            
-            <% if (projeto.duracao) { %>
-              <div class="info-item">
-                <strong>Duração</strong>
-                <p><%= projeto.duracao %></p>
-              </div>
-            <% } %>
-            
-            <% if (projeto.membros && projeto.membros.length > 0) { %>
-              <div class="info-item">
-                <strong>Membros da Equipe</strong>
-                <p><%= projeto.membros.join(', ') %></p>
-              </div>
-            <% } %>
-            
-            <% if (projeto.data) { %>
-              <div class="info-item">
-                <strong>Data de Finalização</strong>
-                <p><%= new Date(projeto.data).toLocaleDateString('pt-BR') %></p>
-              </div>
-            <% } %>
-          </div>
-        </div>
-      </section>
-
-      <!-- LINKS EXTERNOS -->
-      <% if (projeto.linkDoc || projeto.linkGithub) { %>
-        <section class="projeto-secao links-externos">
-          <h2>Links Úteis</h2>
-          <div class="secao-content">
-            <div class="links-grid">
-              <% if (projeto.linkDoc) { %>
-                <a href="<%= projeto.linkDoc %>" target="_blank" class="btn-link doc">
-                  Ver Documentação Completa
-                </a>
-              <% } %>
-              <% if (projeto.linkGithub) { %>
-                <a href="<%= projeto.linkGithub %>" target="_blank" class="btn-link github">
-                  Repositório no GitHub
-                </a>
-              <% } %>
-            </div>
-          </div>
         </section>
-      <% } %>
+
+        <!-- FUNCIONAMENTO -->
+        <section id="funcionamento" class="projeto-secao">
+            <h2>Funcionamento</h2>
+            <div class="secao-content">
+                <p><%= projeto.funcionamento %></p>
+
+                <% if (projeto.fluxo && projeto.fluxo.length > 0) { %>
+                    <div class="fluxo">
+                        <h3>Fluxo de Operação</h3>
+                        <ol class="fluxo-list">
+                        <% projeto.fluxo.forEach(passo => { %>
+                            <li>
+                                <strong><%= passo.titulo %></strong>
+                                <p><%= passo.descricao %></p>
+                            </li>
+                        <% }); %>
+                        </ol>
+                    </div>
+                <% } %>
+
+                <% if (projeto.logica) { %>
+                    <div class="logica">
+                        <h3>Lógica Principal</h3>
+                        <p><%= projeto.logica %></p>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- COMPONENTES -->
+        <section id="componentes" class="projeto-secao">
+            <h2>Componentes / Materiais</h2>
+            <div class="secao-content">
+                <% if (projeto.componentes && projeto.componentes.length > 0) { %>
+                    <div class="componentes-grid">
+                    <% projeto.componentes.forEach(componente => { %>
+                        <div class="componente-card">
+                            <h3><%= componente.nome %></h3>
+                            <p class="quantidade">Qtd: <strong><%= componente.quantidade || 1 %></strong></p>
+                            <p class="descricao"><%= componente.descricao %></p>
+                            <% if (componente.funcao) { %>
+                                <p class="funcao"><strong>Função:</strong> <%= componente.funcao %></p>
+                            <% } %>
+                            <% if (componente.preco) { %>
+                                <p class="preco">R$ <%= componente.preco %></p>
+                            <% } %>
+                        </div>
+                    <% }); %>
+                    </div>
+
+                    <% if (projeto.custoTotal) { %>
+                        <div class="custo-total">
+                            <p><strong>Custo Total Estimado:</strong> R$ <%= projeto.custoTotal %></p>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- TECNOLOGIAS -->
+        <section id="tecnologias" class="projeto-secao">
+            <h2>Tecnologias Utilizadas</h2>
+            <div class="secao-content">
+                <% if (projeto.tecnologias && projeto.tecnologias.length > 0) { %>
+                    <div class="tecnologias-grid">
+                    <% projeto.tecnologias.forEach(tech => { %>
+                        <div class="tech-card">
+                            <span class="tech-name"><%= tech.nome %></span>
+                            <% if (tech.tipo) { %>
+                                <span class="tech-tipo"><%= tech.tipo %></span>
+                            <% } %>
+                            <% if (tech.descricao) { %>
+                                <p><%= tech.descricao %></p>
+                            <% } %>
+                        </div>
+                    <% }); %>
+                    </div>
+                <% } %>
+
+                <% if (projeto.linguagens && projeto.linguagens.length > 0) { %>
+                    <div class="linguagens">
+                        <h3>Linguagens de Programação</h3>
+                        <div class="tag-list">
+                        <% projeto.linguagens.forEach(lang => { %>
+                            <span class="tag"><%= lang %></span>
+                        <% }); %>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- EQUIPE -->
+        <% if (projeto.membros && projeto.membros.length > 0) { %>
+            <section id="equipe" class="projeto-secao">
+                <h2>Equipe</h2>
+                <div class="secao-content">
+                    <div class="membros-grid">
+                    <% projeto.membros.forEach(membro => { %>
+                        <%
+                            // pra mudar se o projeto recebe um objeto de membro ao inves de a string
+                            const nomeMembro = typeof membro === "string" ? membro : membro.nome;
+                            const cargoMembro = (typeof membro === "object" && membro.cargo) ? membro.cargo : null;
+                            const linkMembro = (typeof membro === "object" && membro.link) ? membro.link : null;
+
+                        %>
+                        <div class="membro-card">
+                            <div class="membro-banner"></div>
+                            <div class="membro-avatar"><img
+                                        src="/images/placeholder.jpg"
+                                        alt="Imagem não disponível"
+                                ></div>
+                            <div class="membro-info">
+                                <h3 class="membro-nome"><%= nomeMembro %></h3>
+                                <% if (cargoMembro) { %>
+                                    <span class="membro-cargo"><%= cargoMembro %></span>
+                                <% } else { %>
+                                    <span class="membro-cargo">Eixo não informado</span>
+                                <% } %>
+                                <% if (linkMembro) { %>
+                                    <a href="<%= linkMembro %>" target="_blank" rel="noopener" class="membro-link">Perfil</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }); %>
+                    </div>
+                </div>
+            </section>
+        <% } %>
+
+        <!-- GALERIA -->
+        <% if ((projeto.imagens && projeto.imagens.length > 0) || projeto.video) { %>
+            <section id="galeria" class="projeto-secao">
+                <h2>Galeria</h2>
+                <div class="secao-content">
+
+                    <div class="galeria-grid" id="galeria-grid">
+
+                    <% if (projeto.imagens && projeto.imagens.length > 0) { %>
+                        <% projeto.imagens.forEach(imagem => { %>
+                            <a href="<%= imagem %>"
+                                class="glightbox galeria-item"
+                                data-gallery="projeto-galeria"
+                                data-title="<%= projeto.nome %>">
+                                <img src="<%= imagem %>" alt="<%= projeto.nome %>">
+                            </a>
+                        <% }); %>
+                    <% } %>
+
+                    <% if (projeto.video) { %>
+                        <div class="galeria-item galeria-item--video video-container">
+                            <iframe
+                                src="<%= projeto.video %>"
+                                title="Vídeo - <%= projeto.nome %>"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    <% } %>
+                    </div>
+                </div>
+            </section>
+        <% } %>
+
+        <!-- RESULTADOS -->
+        <section id="resultados" class="projeto-secao">
+            <h2>Resultados e Perspectivas</h2>
+            <div class="secao-content">
+                <% if (projeto.resultados) { %>
+                    <div class="resultados-box">
+                        <h3>Resultados Alcançados</h3>
+                        <p><%= projeto.resultados %></p>
+                    </div>
+                <% } %>
+                <% if (projeto.melhorias && projeto.melhorias.length > 0) { %>
+                    <div class="melhorias-box">
+                        <h3>Possíveis Melhorias</h3>
+                        <ul>
+                        <% projeto.melhorias.forEach(melhoria => { %>
+                            <li><%= melhoria %></li>
+                        <% }); %>
+                        </ul>
+                    </div>
+                <% } %>
+                <% if (projeto.aplicacoes && projeto.aplicacoes.length > 0) { %>
+                    <div class="aplicacoes-box">
+                        <h3>Aplicações Futuras</h3>
+                        <ul>
+                        <% projeto.aplicacoes.forEach(app => { %>
+                            <li><%= app %></li>
+                        <% }); %>
+                        </ul>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- INFORMAÇÕES ADICIONAIS -->
+        <% if (projeto.data || projeto.duracao) { %>
+            <section class="projeto-secao info-adicional">
+                <h2>Informações Adicionais</h2>
+                <div class="secao-content">
+                    <div class="info-grid">
+                        <% if (projeto.data) { %>
+                            <div class="info-item">
+                                <strong>Data de Finalização</strong>
+                                <p><%= new Date(projeto.data).toLocaleDateString('pt-BR') %></p>
+                            </div>
+                        <% } %>
+                        <% if (projeto.duracao) { %>
+                            <div class="info-item">
+                                <strong>Duração</strong>
+                                <p><%= projeto.duracao %></p>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </section>
+        <% } %>
+
+        <!-- LINKS EXTERNOS -->
+        <% if (projeto.linkDoc || projeto.linkGithub) { %>
+            <section class="projeto-secao links-externos">
+                <h2>Links Úteis</h2>
+                <div class="secao-content">
+                    <div class="links-grid">
+                        <% if (projeto.linkDoc) { %>
+                            <a href="<%= projeto.linkDoc %>" target="_blank" rel="noopener" class="btn-link doc">
+                                Ver Documentação Completa
+                            </a>
+                        <% } %>
+                        <% if (projeto.linkGithub) { %>
+                            <a href="<%= projeto.linkGithub %>" target="_blank" rel="noopener" class="btn-link github">
+                                Repositório no GitHub
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </section>
+        <% } %>
 
     </div>
 
     <!-- Botão Voltar -->
     <div class="btn-voltar">
-      <a href="/projetos" class="btn-back">← Voltar para Projetos</a>
+        <a href="/projetos" class="btn-back">← Voltar para Projetos</a>
     </div>
 
-  </main>
+</main>
 
-  <%- include("../partials/footer") %>
+<%- include("../partials/footer") %>
+
+<!-- lightbox de fotos e vídeos (galeria + hero) -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+    GLightbox({ selector: '.glightbox' });
+
+    // Menu "Conteúdo" recolhível (mobile)
+    (function () {
+        var toggle = document.querySelector('.toc-toggle');
+        var lista = document.getElementById('toc-lista');
+        if (!toggle || !lista) return;
+
+        toggle.addEventListener('click', function () {
+            var aberto = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!aberto));
+            lista.classList.toggle('aberto', !aberto);
+        });
+    })();
+</script>
 
 </body>
 </html>
