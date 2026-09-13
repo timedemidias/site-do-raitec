@@ -1,30 +1,60 @@
 <h1>Editar membro</h1>
 
-<form
-  action="/admin/membros/<%= membro.id %>/editar"
-  method="POST"
->
+<form action="/admin/membros/<%= membro.id %>/editar" method="POST">
 
-  <input
-    type="text"
-    name="nome"
-    value="<%= membro.nome %>"
-  >
+  <!-- NOME -->
+  <input type="text" name="nome" placeholder="Nome" value="<%= membro.nome %>">
+  <br><br>
 
-  <input
-    type="text"
-    name="cargo"
-    value="<%= membro.cargo %>"
-  >
+  <!-- SLUG -->
+  <input type="text" name="slug" placeholder="Slug" value="<%= membro.slug %>">
+  <br><br>
 
-  <input
-    type="email"
-    name="email"
-    value="<%= membro.email %>"
-  >
+  <!-- FOTO -->
+  <input type="text" name="foto" placeholder="URL da foto" value="<%= membro.foto %>">
+  <br><br>
 
-  <button type="submit">
-    Salvar
-  </button>
+  <!-- EIXO -->
+  <select name="eixo">
+    <option value="Apoio" <%= membro.eixo === 'Apoio' ? 'selected' : '' %>>Apoio</option>
+    <option value="Inovação" <%= membro.eixo === 'Inovação' ? 'selected' : '' %>>Inovação</option>
+    <option value="Técnico" <%= membro.eixo === 'Técnico' ? 'selected' : '' %>>Técnico</option>
+  </select>
+  <br><br>
+
+  <!-- TIME -->
+  <select name="time">
+    <option value="" <%= !membro.time ? 'selected' : '' %>>Nenhum</option>
+    <option value="Processos" <%= membro.time === 'Processos' ? 'selected' : '' %>>Processos</option>
+    <option value="Mídias" <%= membro.time === 'Mídias' ? 'selected' : '' %>>Mídias</option>
+  </select>
+  <br><br>
+
+  <!-- CARGO -->
+  <select name="cargo">
+    <option value="Membro" <%= membro.cargo === 'Membro' ? 'selected' : '' %>>Membro</option>
+    <option value="Coordenador" <%= membro.cargo === 'Coordenador' ? 'selected' : '' %>>Coordenador</option>
+    <option value="Gerente de Projetos" <%= membro.cargo === 'Gerente de Projetos' ? 'selected' : '' %>>Gerente de Projetos</option>
+    <option value="Gerente Institucional" <%= membro.cargo === 'Gerente Institucional' ? 'selected' : '' %>>Gerente Institucional</option>
+    <option value="Diretor" <%= membro.cargo === 'Diretor' ? 'selected' : '' %>>Diretor</option>
+  </select>
+  <br><br>
+
+  <!-- DESCRIÇÃO -->
+  <textarea name="descricao" placeholder="Descrição"><%= membro.descricao %></textarea>
+  <br><br>
+
+  <!-- PROJETOS -->
+  <input type="text" name="projetos" placeholder="Projetos separados por vírgula" value="<%= membro.projetos %>">
+  <br><br>
+
+  <!-- ATIVO -->
+  <label>
+    <input type="checkbox" name="ativo" <%= membro.ativo ? 'checked' : '' %>>
+    Ativo
+  </label>
+  <br><br>
+
+  <button type="submit">Salvar</button>
 
 </form>
