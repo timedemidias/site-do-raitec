@@ -1,0 +1,451 @@
+/* --- CONFIGURAÇÕES GERAIS E FONTES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Cairo', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- CABEÇALHO E RODAPÉ --- */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #05053f;
+    height: 122px;
+}
+.logo img { 
+    height: 70px; 
+    margin-left: 2rem; 
+}
+.btn-abrir-menu, .btn-fechar-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- INTEGRAÇÃO DO NOVO MENU --- */
+.menu {
+    background-color: #05053f;
+}
+.menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+.menu ul li {
+    position: relative;
+}
+.menu ul li a { 
+    font-family: 'Ubuntu', sans-serif; 
+    text-decoration: none; 
+    font-size: 15px; 
+    color: white; 
+    font-weight: bold;
+    padding: 8px 10px;
+    display: block;
+    transition: background-color 0.2s, border-radius 0.2s; 
+    cursor: pointer;
+}
+.menu ul li a:hover {
+    background-color: #09cccc;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Submenu Escondido (Desktop) */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #05053f;
+    padding: 10px 0;
+    min-width: 180px;
+    list-style: none;
+    z-index: 20;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border-radius: 0 0 5px 5px;
+}
+.dropdown:hover > .submenu {
+    display: block;
+}
+.submenu li {
+    margin: 0;
+}
+.submenu li a {
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+/* --- RODAPÉ --- */
+.rodape { 
+    background-color: #05053f; 
+    margin-top: auto; 
+}
+.rodape_caixa { 
+    display: flex; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    gap: 20px; 
+    padding: 20px; 
+}
+.rodape_info {
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+.rodape_logo img { 
+    height: 100px; 
+}
+.rodape_texto p, .rodape_texto a { 
+    font-size: 16px; 
+    color: #e5e7eb; 
+    text-decoration: none; 
+}
+.rodape_social { 
+    display: flex; 
+    gap: 20px; 
+}
+.rodape_social a {
+     display: flex; 
+     justify-content: center; 
+     align-items: center; 
+     width: 46px; 
+     height: 46px; 
+     border-radius: 50%; 
+     background-color: rgba(255, 255, 255, 0.1); 
+     color: #ffffff; 
+     font-size: 20px; 
+     text-decoration: none; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PÁGINA DO PERFIL --- */
+.perfil-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    width: 100%;
+    padding: 0 40px;
+    flex: 1;
+}
+
+/* Perfil Topo (Imagem + Infos) */
+.perfil-topo {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+.perfil-img-box {
+    flex: 0 0 400px;
+    height: 400px;
+    background-color: #d9d9d9;
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.perfil-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.perfil-dados {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+.dado-destaque {
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 32px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+}
+.dado-secundario {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; 
+}
+.dado-secundario .dado-destaque {
+    flex: 1;
+    font-size: 20px; 
+    padding: 15px;
+    min-width: 150px;
+}
+.descricao-card {
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    padding: 25px 30px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 18px;
+    color: #000;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Projetos Trabalhados */
+.projetos-titulo {
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 40px;
+    color: #000;
+}
+.carrossel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.btn-seta {
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 12px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+}
+.btn-seta:hover {
+    background-color: #bfbfbf;
+}
+.projetos-track {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    flex: 1;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+.projetos-track::-webkit-scrollbar {
+    display: none;
+}
+.projeto-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    flex: 0 0 300px; 
+    height: 120px; 
+    background-color: #8a8a8a; 
+    border-radius: 20px;
+    padding: 20px;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.projeto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.projeto-nome {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 900px) {
+    .btn-abrir-menu { 
+        display: block; 
+        font-size: 30px; 
+        margin-right: 2rem; 
+    }
+    .menu { 
+        position: fixed; 
+        top: 0; 
+        right: -100%; 
+        width: 100vw; 
+        height: 100vh; 
+        z-index: 1000; 
+        display: flex; 
+        justify-content: flex-end; 
+        padding: 20px; 
+        background: rgba(0,0,0,0.5); /* Fundo escuro atrás do menu */
+        transition: right 0.4s ease-in-out; 
+    }
+    .menu.ativo { 
+        right: 0; 
+    }
+    .menu-container { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-end; 
+    }
+    .btn-fechar-menu { 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        background-color: #24284b; 
+        width: 60px; 
+        height: 60px; 
+        border-radius: 8px; 
+        font-size: 30px; 
+        margin-bottom: 15px; 
+    }
+    .menu ul { 
+        flex-direction: column; 
+        align-items: flex-start; /* Alinha itens à esquerda dentro do menu */
+        background-color: #05053f; 
+        padding: 40px 30px; 
+        width: 260px; 
+        border-radius: 8px; 
+        gap: 1rem;
+        overflow-y: auto; /* Evita quebra se a tela for muito pequena */
+        max-height: calc(100vh - 100px);
+    }
+    
+
+
+
+
+
+    
+    /* Submenu Responsivo */
+    .submenu {
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 10px 0 10px 15px;
+    }
+    .dropdown:hover > .submenu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .perfil-container { padding: 0 20px; }
+    .perfil-topo { flex-direction: column; gap: 30px; margin-bottom: 50px; }
+    .perfil-img-box { flex: 0 0 auto; width: 100%; max-width: 400px; height: auto; aspect-ratio: 1 / 1; margin: 0 auto; }
+    .dado-destaque.nome { font-size: 24px; }
+    .dado-secundario { flex-direction: column; gap: 15px; }
+    .dado-secundario .dado-destaque { font-size: 20px; padding: 12px; }
+    .projetos-titulo { font-size: 20px; padding: 12px 24px; text-align: center; display: block; }
+    .carrossel-wrapper { position: relative; }
+    .btn-seta { position: absolute; top: 35%; transform: translateY(-50%); z-index: 10; opacity: 0.9; width: 40px; height: 40px; }
+    #btnPrev { left: -10px; }
+    #btnNext { right: -10px; }
+    .projeto-card { min-width: 240px; }
+}
