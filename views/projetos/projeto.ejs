@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,7 +24,7 @@
 
         <% if (projeto.imagens && projeto.imagens.length > 0) { %>
             <div class="hero-imagem">
-                <a href="<%= projeto.imagens[0] %>" class="glightbox" data-gallery="hero">
+                <a href="<%= projeto.imagens[0] %>" class="glightbox" data-gallery="hero" data-type="image">
                     <img src="<%= projeto.imagens[0] %>" alt="<%= projeto.nome %>">
                 </a>
             </div>
@@ -224,7 +225,7 @@
                             <a href="<%= imagem %>"
                                 class="glightbox galeria-item"
                                 data-gallery="projeto-galeria"
-                                data-title="<%= projeto.nome %>">
+                                data-type="image">
                                 <img src="<%= imagem %>" alt="<%= projeto.nome %>">
                             </a>
                         <% }); %>
@@ -336,7 +337,11 @@
 <!-- lightbox de fotos e vídeos (galeria + hero) -->
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script>
-    GLightbox({ selector: '.glightbox' });
+    GLightbox({
+        selector: '.glightbox',
+        background: 'transparent',
+        loop: true
+    });
 
     // Menu "Conteúdo" recolhível (mobile)
     (function () {
@@ -354,3 +359,5 @@
 
 </body>
 </html>
+
+

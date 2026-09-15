@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Projetos - Admin</title>
+
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/admin/projetos.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="admin-header">
+
+    <h1>
+      Projetos
+    </h1>
+
+    <div class="header-buttons">
+
+      <a
+        href="/admin"
+        class="btn btn-secondary"
+      >
+        Voltar
+      </a>
+
+      <a
+        href="/logout"
+        class="btn btn-danger"
+      >
+        Sair
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- CONTAINER -->
+  <main class="admin-container">
+
+    <!-- TOPO -->
+    <div class="page-header">
+
+      <h1>
+        Todos os projetos
+      </h1>
+
+      <a
+        href="/admin/projetos/criar"
+        class="btn btn-primary"
+      >
+        Novo projeto
+      </a>
+
+    </div>
+
+
+    <!-- GRID -->
+    <div class="admin-grid">
+
+      <% projetos.forEach(projeto => { %>
+
+        <div class="card">
+
+          <div>
+
+            <h2>
+              <%= projeto.nome %>
+            </h2>
+
+            <%
+              const statusClasses = {
+                ativo: "status-ativo",
+                finalizado: "status-finalizado",
+                arquivado: "status-arquivado"
+              };
+              const statusClass = statusClasses[projeto.status] || "status-inativo";
+            %>
+
+            <span class="status <%= statusClass %>">
+              <%= projeto.status || 'sem status' %>
+            </span>
+
+            <span class="eixo-pill">
+              <%= projeto.eixoTecnico || 'Eixo não informado' %>
+            </span>
+
+          </div>
+
+
+          <!-- AÇÕES -->
+          <div class="card-actions">
+
+            <a
+              href="/admin/projetos/<%= projeto.id %>/editar"
+              class="btn btn-primary"
+            >
+              Editar
+            </a>
+
+            <form
+              action="/admin/projetos/<%= projeto.id %>/deletar"
+              method="POST"
+            >
+
+              <button
+                type="submit"
+                class="btn btn-danger"
+              >
+                Excluir
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

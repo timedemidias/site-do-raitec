@@ -1,0 +1,65 @@
+/* ========================================
+   CRUD DE PROJETOS - ADMIN
+   Depende de /css/admin.css (deve ser
+   carregado antes deste arquivo)
+======================================== */
+
+
+/* ========================================
+   STATUS (pill)
+   A base (.status, .status-ativo,
+   .status-inativo) vem do admin.css.
+   Aqui só entram as variações específicas
+   de projeto + a formatação do texto.
+======================================== */
+
+.status{
+  text-transform: capitalize;
+}
+
+.status-finalizado{
+  background-color: #dbe4ff;
+
+  color: #05053f;
+}
+
+.status-arquivado{
+  background-color: #eee;
+
+  color: #666;
+}
+
+
+/* ========================================
+   EIXO TÉCNICO (pill)
+======================================== */
+
+.eixo-pill{
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  width: fit-content;
+
+  text-transform: capitalize;
+
+  background-color: #fff3cd;
+
+  color: #7a5c00;
+}
+
+
+/* ========================================
+   CARD - AJUSTES
+======================================== */
+
+.card .status,
+.card .eixo-pill{
+  display: block;
+
+  margin-bottom: 6px;
+}

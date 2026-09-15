@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Editar Projeto</title>
+
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/admin/projetos.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="admin-header">
+
+    <h1>
+      Editar Projeto
+    </h1>
+
+    <div class="header-buttons">
+
+      <a
+        href="/admin/projetos"
+        class="btn btn-secondary"
+      >
+        Voltar
+      </a>
+
+      <a
+        href="/logout"
+        class="btn btn-danger"
+      >
+        Sair
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- CONTAINER -->
+  <main class="admin-container">
+
+    <div class="form-card">
+
+      <form
+        action="/admin/projetos/<%= projeto.id %>/editar"
+        method="POST"
+        class="admin-form"
+      >
+
+        <!-- NOME -->
+        <div class="form-group">
+
+          <label>
+            Nome
+          </label>
+
+          <input
+            type="text"
+            name="nome"
+            value="<%= projeto.nome || '' %>"
+            required
+          >
+
+        </div>
+
+
+        <!-- SLUG -->
+        <div class="form-group">
+
+          <label>
+            Slug
+          </label>
+
+          <input
+            type="text"
+            name="slug"
+            value="<%= projeto.slug || '' %>"
+            readonly
+          >
+
+          <small>
+            O slug é o identificador do projeto e não pode ser alterado depois de criado
+          </small>
+
+        </div>
+
+
+        <!-- STATUS -->
+        <div class="form-group">
+
+          <label>
+            Status
+          </label>
+
+          <select name="status">
+
+            <option value="ativo" <%= projeto.status === 'ativo' ? 'selected' : '' %>>
+              Ativo
+            </option>
+
+            <option value="finalizado" <%= projeto.status === 'finalizado' ? 'selected' : '' %>>
+              Finalizado
+            </option>
+
+            <option value="arquivado" <%= projeto.status === 'arquivado' ? 'selected' : '' %>>
+              Arquivado
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- EIXO TÉCNICO -->
+        <div class="form-group">
+
+          <label>
+            Eixo Técnico
+          </label>
+
+          <select name="eixoTecnico">
+
+            <option value="Técnico" <%= projeto.eixoTecnico === 'Técnico' ? 'selected' : '' %>>
+              Técnico
+            </option>
+
+            <option value="Inovação" <%= projeto.eixoTecnico === 'Inovação' ? 'selected' : '' %>>
+              Inovação
+            </option>
+
+            <option value="Apoio" <%= projeto.eixoTecnico === 'Apoio' ? 'selected' : '' %>>
+              Apoio
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- OBJETIVO -->
+        <div class="form-group">
+
+          <label>
+            Objetivo
+          </label>
+
+          <textarea name="objetivo"><%= projeto.objetivo || '' %></textarea>
+
+        </div>
+
+
+        <!-- DESCRIÇÃO -->
+        <div class="form-group">
+
+          <label>
+            Descrição
+          </label>
+
+          <textarea name="descricao"><%= projeto.descricao || '' %></textarea>
+
+        </div>
+
+
+        <!-- PROBLEMA -->
+        <div class="form-group">
+
+          <label>
+            Problema Resolvido
+          </label>
+
+          <textarea name="problema"><%= projeto.problema || '' %></textarea>
+
+        </div>
+
+
+        <!-- JUSTIFICATIVA -->
+        <div class="form-group">
+
+          <label>
+            Justificativa
+          </label>
+
+          <textarea name="justificativa"><%= projeto.justificativa || '' %></textarea>
+
+        </div>
+
+
+        <!-- FUNCIONAMENTO -->
+        <div class="form-group">
+
+          <label>
+            Funcionamento
+          </label>
+
+          <textarea name="funcionamento"><%= projeto.funcionamento || '' %></textarea>
+
+        </div>
+
+
+        <!-- LÓGICA -->
+        <div class="form-group">
+
+          <label>
+            Lógica Principal
+          </label>
+
+          <textarea name="logica"><%= projeto.logica || '' %></textarea>
+
+        </div>
+
+
+        <!-- FLUXO -->
+        <div class="form-group">
+
+          <label>
+            Fluxo de Operação
+          </label>
+
+          <textarea name="fluxo"><%= helpers.fluxoParaTexto(projeto.fluxo) %></textarea>
+
+          <small>
+            Um passo por linha, no formato: Título | Descrição
+          </small>
+
+        </div>
+
+
+        <!-- COMPONENTES -->
+        <div class="form-group">
+
+          <label>
+            Componentes / Materiais
+          </label>
+
+          <textarea name="componentes"><%= helpers.componentesParaTexto(projeto.componentes) %></textarea>
+
+          <small>
+            Um componente por linha, no formato: Nome | Quantidade | Descrição | Função | Preço
+          </small>
+
+        </div>
+
+
+        <!-- CUSTO TOTAL -->
+        <div class="form-group">
+
+          <label>
+            Custo Total Estimado
+          </label>
+
+          <input
+            type="text"
+            name="custoTotal"
+            value="<%= projeto.custoTotal || '' %>"
+          >
+
+        </div>
+
+
+        <!-- TECNOLOGIAS -->
+        <div class="form-group">
+
+          <label>
+            Tecnologias Utilizadas
+          </label>
+
+          <textarea name="tecnologias"><%= helpers.tecnologiasParaTexto(projeto.tecnologias) %></textarea>
+
+          <small>
+            Uma tecnologia por linha, no formato: Nome | Tipo | Descrição
+          </small>
+
+        </div>
+
+
+        <!-- LINGUAGENS -->
+        <div class="form-group">
+
+          <label>
+            Linguagens de Programação
+          </label>
+
+          <input
+            type="text"
+            name="linguagens"
+            value="<%= helpers.listaParaTexto(projeto.linguagens) %>"
+          >
+
+          <small>
+            Separar por vírgula
+          </small>
+
+        </div>
+
+
+        <!-- MEMBROS -->
+        <div class="form-group">
+
+          <label>
+            Equipe / Membros
+          </label>
+
+          <textarea name="membros"><%= helpers.membrosParaTexto(projeto.membros) %></textarea>
+
+          <small>
+            Um membro por linha, no formato: Nome | Cargo | Link (cargo e link são opcionais)
+          </small>
+
+        </div>
+
+
+        <!-- IMAGENS -->
+        <div class="form-group">
+
+          <label>
+            Imagens
+          </label>
+
+          <textarea name="imagens"><%= helpers.listaParaTexto(projeto.imagens) %></textarea>
+
+          <small>
+            URLs separadas por vírgula. A primeira imagem é usada como capa
+          </small>
+
+        </div>
+
+
+        <!-- VÍDEO -->
+        <div class="form-group">
+
+          <label>
+            Vídeo (URL de embed)
+          </label>
+
+          <input
+            type="text"
+            name="video"
+            value="<%= projeto.video || '' %>"
+          >
+
+        </div>
+
+
+        <!-- RESULTADOS -->
+        <div class="form-group">
+
+          <label>
+            Resultados Alcançados
+          </label>
+
+          <textarea name="resultados"><%= projeto.resultados || '' %></textarea>
+
+        </div>
+
+
+        <!-- MELHORIAS -->
+        <div class="form-group">
+
+          <label>
+            Possíveis Melhorias
+          </label>
+
+          <input
+            type="text"
+            name="melhorias"
+            value="<%= helpers.listaParaTexto(projeto.melhorias) %>"
+          >
+
+          <small>
+            Separar por vírgula
+          </small>
+
+        </div>
+
+
+        <!-- APLICAÇÕES -->
+        <div class="form-group">
+
+          <label>
+            Aplicações Futuras
+          </label>
+
+          <input
+            type="text"
+            name="aplicacoes"
+            value="<%= helpers.listaParaTexto(projeto.aplicacoes) %>"
+          >
+
+          <small>
+            Separar por vírgula
+          </small>
+
+        </div>
+
+
+        <!-- DATA -->
+        <div class="form-group">
+
+          <label>
+            Data de Finalização
+          </label>
+
+          <input
+            type="date"
+            name="data"
+            value="<%= projeto.data || '' %>"
+          >
+
+        </div>
+
+
+        <!-- DURAÇÃO -->
+        <div class="form-group">
+
+          <label>
+            Duração
+          </label>
+
+          <input
+            type="text"
+            name="duracao"
+            value="<%= projeto.duracao || '' %>"
+          >
+
+        </div>
+
+
+        <!-- LINK DOC -->
+        <div class="form-group">
+
+          <label>
+            Link da Documentação
+          </label>
+
+          <input
+            type="text"
+            name="linkDoc"
+            value="<%= projeto.linkDoc || '' %>"
+          >
+
+        </div>
+
+
+        <!-- LINK GITHUB -->
+        <div class="form-group">
+
+          <label>
+            Link do GitHub
+          </label>
+
+          <input
+            type="text"
+            name="linkGithub"
+            value="<%= projeto.linkGithub || '' %>"
+          >
+
+        </div>
+
+
+        <!-- BOTÕES -->
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Salvar Alterações
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
