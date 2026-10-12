@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Criar Projeto</title>
+
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/admin/projetos.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="admin-header">
+
+    <h1>
+      Criar Projeto
+    </h1>
+
+    <div class="header-buttons">
+
+      <a
+        href="/admin/projetos"
+        class="btn btn-secondary"
+      >
+        Voltar
+      </a>
+
+      <a
+        href="/logout"
+        class="btn btn-danger"
+      >
+        Sair
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- CONTAINER -->
+  <main class="admin-container">
+
+    <div class="form-card">
+
+      <form
+        action="/admin/projetos/criar"
+        method="POST"
+        class="admin-form"
+      >
+
+        <!-- NOME -->
+        <div class="form-group">
+
+          <label>
+            Nome
+          </label>
+
+          <input
+            type="text"
+            name="nome"
+            placeholder="Nome do projeto"
+            required
+          >
+
+        </div>
+
+
+        <!-- SLUG -->
+        <div class="form-group">
+
+          <label>
+            Slug
+          </label>
+
+          <input
+            type="text"
+            name="slug"
+            placeholder="nome-do-projeto"
+          >
+
+          <small>
+            Deixe em branco para gerar automaticamente a partir do nome. Esse valor vira o id do projeto e não poderá ser alterado depois
+          </small>
+
+        </div>
+
+
+        <!-- STATUS -->
+        <div class="form-group">
+
+          <label>
+            Status
+          </label>
+
+          <select name="status">
+
+            <option value="ativo">
+              Ativo
+            </option>
+
+            <option value="finalizado">
+              Finalizado
+            </option>
+
+            <option value="arquivado">
+              Arquivado
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- EIXO TÉCNICO -->
+        <div class="form-group">
+
+          <label>
+            Eixo Técnico
+          </label>
+
+          <select name="eixoTecnico">
+
+            <option value="Técnico">
+              Técnico
+            </option>
+
+            <option value="Inovação">
+              Inovação
+            </option>
+
+            <option value="Apoio">
+              Apoio
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- OBJETIVO -->
+        <div class="form-group">
+
+          <label>
+            Objetivo
+          </label>
+
+          <textarea
+            name="objetivo"
+            placeholder="Objetivo geral do projeto"
+          ></textarea>
+
+        </div>
+
+
+        <!-- DESCRIÇÃO -->
+        <div class="form-group">
+
+          <label>
+            Descrição
+          </label>
+
+          <textarea
+            name="descricao"
+            placeholder="Descrição completa do projeto"
+          ></textarea>
+
+        </div>
+
+
+        <!-- PROBLEMA -->
+        <div class="form-group">
+
+          <label>
+            Problema Resolvido
+          </label>
+
+          <textarea
+            name="problema"
+            placeholder="Qual problema o projeto resolve"
+          ></textarea>
+
+        </div>
+
+
+        <!-- JUSTIFICATIVA -->
+        <div class="form-group">
+
+          <label>
+            Justificativa
+          </label>
+
+          <textarea
+            name="justificativa"
+            placeholder="Por que o projeto existe"
+          ></textarea>
+
+        </div>
+
+
+        <!-- FUNCIONAMENTO -->
+        <div class="form-group">
+
+          <label>
+            Funcionamento
+          </label>
+
+          <textarea
+            name="funcionamento"
+            placeholder="Como o projeto funciona"
+          ></textarea>
+
+        </div>
+
+
+        <!-- LÓGICA -->
+        <div class="form-group">
+
+          <label>
+            Lógica Principal
+          </label>
+
+          <textarea
+            name="logica"
+            placeholder="Lógica principal do sistema"
+          ></textarea>
+
+        </div>
+
+
+        <!-- FLUXO -->
+        <div class="form-group">
+
+          <label>
+            Fluxo de Operação
+          </label>
+
+          <textarea
+            name="fluxo"
+            placeholder="Título | Descrição"
+          ></textarea>
+
+          <small>
+            Um passo por linha, no formato: Título | Descrição
+          </small>
+
+        </div>
+
+
+        <!-- COMPONENTES -->
+        <div class="form-group">
+
+          <label>
+            Componentes / Materiais
+          </label>
+
+          <textarea
+            name="componentes"
+            placeholder="Nome | Quantidade | Descrição | Função | Preço"
+          ></textarea>
+
+          <small>
+            Um componente por linha, no formato: Nome | Quantidade | Descrição | Função | Preço
+          </small>
+
+        </div>
+
+
+        <!-- CUSTO TOTAL -->
+        <div class="form-group">
+
+          <label>
+            Custo Total Estimado
+          </label>
+
+          <input
+            type="text"
+            name="custoTotal"
+            placeholder="Ex: 150.00"
+          >
+
+        </div>
+
+
+        <!-- TECNOLOGIAS -->
+        <div class="form-group">
+
+          <label>
+            Tecnologias Utilizadas
+          </label>
+
+          <textarea
+            name="tecnologias"
+            placeholder="Nome | Tipo | Descrição"
+          ></textarea>
+
+          <small>
+            Uma tecnologia por linha, no formato: Nome | Tipo | Descrição
+          </small>
+
+        </div>
+
+
+        <!-- LINGUAGENS -->
+        <div class="form-group">
+
+          <label>
+            Linguagens de Programação
+          </label>
+
+          <input
+            type="text"
+            name="linguagens"
+            placeholder="Ex: C++, Dart"
+          >
+
+          <small>
+            Separar por vírgula
+          </small>
+
+        </div>
+
+
+        <!-- MEMBROS -->
+        <div class="form-group">
+
+          <label>
+            Equipe / Membros
+          </label>
+
+          <textarea
+            name="membros"
+            placeholder="Nome | Cargo | Link do perfil"
+          ></textarea>
+
+          <small>
+            Um membro por linha, no formato: Nome | Cargo | Link (cargo e link são opcionais)
+          </small>
+
+        </div>
+
+
+        <!-- IMAGENS -->
+        <div class="form-group">
+
+          <label>
+            Imagens
+          </label>
+
+          <textarea
+            name="imagens"
+            placeholder="URL da imagem 1, URL da imagem 2"
+          ></textarea>
+
+          <small>
+            URLs separadas por vírgula. A primeira imagem é usada como capa
+          </small>
+
+        </div>
+
+
+        <!-- VÍDEO -->
+        <div class="form-group">
+
+          <label>
+            Vídeo (URL de embed)
+          </label>
+
+          <input
+            type="text"
+            name="video"
+            placeholder="Ex: https://www.youtube.com/embed/..."
+          >
+
+        </div>
+
+
+        <!-- RESULTADOS -->
+        <div class="form-group">
+
+          <label>
+            Resultados Alcançados
+          </label>
+
+          <textarea
+            name="resultados"
+            placeholder="Resultados obtidos com o projeto"
+          ></textarea>
+
+        </div>
+
+
+        <!-- MELHORIAS -->
+        <div class="form-group">
+
+          <label>
+            Possíveis Melhorias
+          </label>
+
+          <input
+            type="text"
+            name="melhorias"
+            placeholder="Melhoria 1, Melhoria 2"
+          >
+
+          <small>
+            Separar por vírgula
+          </small>
+
+        </div>
+
+
+        <!-- APLICAÇÕES -->
+        <div class="form-group">
+
+          <label>
+            Aplicações Futuras
+          </label>
+
+          <input
+            type="text"
+            name="aplicacoes"
+            placeholder="Aplicação 1, Aplicação 2"
+          >
+
+          <small>
+            Separar por vírgula
+          </small>
+
+        </div>
+
+
+        <!-- DATA -->
+        <div class="form-group">
+
+          <label>
+            Data de Finalização
+          </label>
+
+          <input
+            type="date"
+            name="data"
+          >
+
+        </div>
+
+
+        <!-- DURAÇÃO -->
+        <div class="form-group">
+
+          <label>
+            Duração
+          </label>
+
+          <input
+            type="text"
+            name="duracao"
+            placeholder="Ex: 6 meses"
+          >
+
+        </div>
+
+
+        <!-- LINK DOC -->
+        <div class="form-group">
+
+          <label>
+            Link da Documentação
+          </label>
+
+          <input
+            type="text"
+            name="linkDoc"
+            placeholder="https://..."
+          >
+
+        </div>
+
+
+        <!-- LINK GITHUB -->
+        <div class="form-group">
+
+          <label>
+            Link do GitHub
+          </label>
+
+          <input
+            type="text"
+            name="linkGithub"
+            placeholder="https://github.com/..."
+          >
+
+        </div>
+
+
+        <!-- BOTÕES -->
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Criar Projeto
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

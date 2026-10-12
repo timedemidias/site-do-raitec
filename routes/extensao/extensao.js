@@ -13,7 +13,7 @@ const extensoes = [
 ];
 
 
-// LISTA DE MEMBROS
+// LISTA DE PROJETOS DE EXTENSÃO
 router.get("/extensao", (req, res) => {
   res.render("extensao/index", {
     extensoes
@@ -21,7 +21,7 @@ router.get("/extensao", (req, res) => {
 });
 
 
-// MEMBRO INDIVIDUAL
+// EXTENSÃO INDIVIDUAL
 router.get("/extensao/:slug", (req, res) => {
   const slug = req.params.slug;
 

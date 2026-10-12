@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --primary-color: #05053f;
+    --accent-color: #09CCCC;
+    --light-bg: #F5F7FA;
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* container de tudo ai */
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 25px 40px;
+    box-sizing: border-box;
+}
+
+/* linha */
+hr {
+    border: none;
+    height: 2px;
+    margin: 30px 0;
+    background: var(--primary-color);
+}
+
+/* cabeçalho */
+.secao-projetos h2 {
+    margin: 0 0 4px;
+    padding-left: 14px;
+    border-left: 5px solid var(--accent-color);
+    font-size: 1.5rem;
+}
+
+
+.swiper-outer {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.swiper {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 10px 45px 45px;
+    box-sizing: border-box;
+    overflow: hidden;
+    --swiper-theme-color: #09CCCC;
+}
+
+.swiper::before,
+.swiper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 45px;
+    width: 45px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.swiper::before {
+    left: 0;
+    background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+}
+
+.swiper::after {
+    right: 0;
+    background: linear-gradient(to left, #fff, rgba(255,255,255,0));
+}
+
+
+.swiper-wrapper {
+    align-items: stretch;
+
+
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    height: auto;
+}
+
+/* CARD */
+.card-projeto {
+    width: 100%;
+    max-width: 320px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+
+    text-decoration: none;
+    color: inherit;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,.12);
+
+    transition:
+            transform .25s ease,
+            box-shadow .25s ease;
+}
+
+.card-projeto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0,0,0,.18);
+}
+
+/* imagem */
+.card-imagem {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.card-imagem img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+/* nome */
+.card-info {
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 14px 14px 12px;
+}
+
+.card-info h3 {
+    margin: 0;
+    padding: 8px 10px;
+
+    border: 3px solid #f2f2f2;
+    border-radius: 10px;
+
+    color: var(--primary-color);
+
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.card-eixo {
+    margin-top: auto;
+    margin-left: auto;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+    border: 2px solid var(--accent-color);
+
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+    .swiper {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .card-projeto {
+        max-width: 280px;
+    }
+
+    .card-info h3 {
+        font-size: 1rem;
+    }
+}
+
+/* celular */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    .swiper {
+        padding-left: 35px;
+        padding-right: 35px;
+        padding-bottom: 35px;
+    }
+
+    .card-projeto {
+        max-width: 100%;
+        border-radius: 14px;
+    }
+
+    .card-imagem {
+        padding: 9px;
+    }
+
+    .card-imagem img {
+        border-radius: 10px;
+    }
+
+    .card-info {
+        padding: 10px;
+    }
+
+    .card-info h3 {
+        font-size: .95rem;
+        padding: 7px 8px;
+    }
+
+    .card-eixo {
+        font-size: .8rem;
+        padding: 5px 10px;
+    }
+}

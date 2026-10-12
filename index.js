@@ -1,3 +1,4 @@
+
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
@@ -44,7 +45,7 @@ const testeRoutes = require("./routes/teste");
 const authRoutes = require("./routes/admin/auth");
 const adminRoutes = require("./routes/admin/admin");
 const adminMembrosRoutes = require("./routes/admin/membros");
-const adminNoticiasRoutes = require("./routes/admin/noticias");
+const adminProjetosRoutes = require("./routes/admin/projetos");
 
 // USAR ROTAS
 app.use("/", sobreRoutes);
@@ -61,7 +62,7 @@ app.use("/", authRoutes);
 app.use("/", adminRoutes);
 app.use("/", testeRoutes);
 app.use("/admin", adminMembrosRoutes);
-app.use("/admin", adminNoticiasRoutes);
+app.use("/admin", adminProjetosRoutes);
 
 // ROTA PRINCIPAL
 app.get("/", (req, res) => {
@@ -74,3 +75,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Servidor rodando na porta", PORT);
 });
+
+
