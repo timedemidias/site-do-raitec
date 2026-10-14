@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -21,6 +21,158 @@
 </ul>
 
 
+</body>
+</html>
+--> 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membros - RAITec</title>
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS de membros. colocar o caminho do css no href = "..." -->
+    <link rel="stylesheet" href="/css/membros.css">
+</head>
+<body>
+      <!-- CSS do header original -->
+      <link rel="stylesheet" href="/css/header.css">
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo RAITec">
+            </a>
+        </div>
+
+        <button class="btn-abrir-menu" id="btnAbrir">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Menu com a estrutura integrada -->
+        <nav id="menuMobile" class="menu">
+            <div class="menu-container">
+                <button class="btn-fechar-menu" id="btnFechar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                
+                <ul>
+                    <li><a href="/">Início</a></li>
+
+                    <li class="dropdown">
+                        <a>Quem Somos</a>
+                        <ul class="submenu">
+                            <li><a href="/sobre">Sobre o Raitec</a></li>
+                            <li><a href="/estrutura">Estrutura</a></li>
+                            <li><a href="/membros">Membros</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/projetos">Projetos</a></li>
+                    <li><a href="/eventos">Eventos</a></li>
+                    <li><a href="/extensao">Extensão</a></li>
+                    <li><a href="/raipedia">Raipedia</a></li>
+                    <li><a href="/processo-seletivo">Processo Seletivo</a></li>
+                    <li><a href="/noticias">Notícias</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal dos Membros -->
+    <main class="membros-container">
+        
+        <div class="titulo-secao">
+            <h2>Membros - RAITec</h2>
+        </div>
+
+        <div class="search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Pesquisar por Nome, Eixo, Time ou Cargo">
+        </div>
+        
+        <div class="members-grid" id="membersGrid">
+            <!-- Cards gerados pelo EJS acessando o banco de dados -->
+            <% membros.forEach(m => { %>
+                <a href="/membros/<%= m.slug %>" class="member-card">
+                    
+                    <!-- Lógica da Imagem: Preparada para o banco de dados. O NOME DA FEATURE ESTÁ COMO "M.FOTO" SE FOR DIFERENTE NA VERSÃO FINAL É SO MUDAR O NOME -->
+                    <% if (m.foto) { %>
+                        <img src="<%= m.foto %>" alt="Foto de <%= m.nome %>" class="member-image">
+                    <% } else { %>
+                        <!-- Placeholder cinza para a fase de testes (puxa o background-color do CSS) -->
+                        <div class="member-image"></div>
+                    <% } %>
+
+                    <div class="member-info">
+                        <strong><%= m.nome %></strong>
+                        <span><%= m.eixo %></span>
+                        <span><%= m.time %></span>
+                    </div>
+                </a>
+            <% }) %>
+        </div>
+
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape_caixa"> 
+            <div class="rodape_info">
+                <div class="rodape_logo"> 
+                    <!--aqui seria o caminho da pagina home(inicio) -->
+                    <a href="/">
+                        <img src="/images/logo2.png" alt="logo 2 do raitec">
+                    </a>
+                </div>
+                <div class="rodape_texto">
+                    <p> © 2026 RAITEC — Todos os direitos reservados.</p>
+                    <p>Contato: <a href="mailto:raitec@ufc.br">raitec@ufc.br</a> </p>
+                </div>
+            </div>
+            <div class="rodape_social">
+                <a href="https://www.facebook.com/raitec.ufc/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/raitec-ufc/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@raitecufc9945" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/raitec.ufc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!--parte do javascript -->
+    <script>
+        // Lógica do Motor de Busca
+        const searchInput = document.getElementById('searchInput');
+        // O EJS já renderizou os elementos, então o querySelectorAll vai encontrá-los
+        const cards = document.querySelectorAll('.member-card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (event) => {
+                const searchTerm = event.target.value.toLowerCase();
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+                });
+            });
+        }
+
+        // Lógica do Menu Mobile
+        const btnAbrir = document.getElementById('btnAbrir');
+        const btnFechar = document.getElementById('btnFechar');
+        const menuMobile = document.getElementById('menuMobile');
+
+        if (btnAbrir && btnFechar && menuMobile) {
+            btnAbrir.addEventListener('click', () => menuMobile.classList.add('ativo'));
+            btnFechar.addEventListener('click', () => menuMobile.classList.remove('ativo'));
+        }
+    </script>
 </body>
 </html>
 

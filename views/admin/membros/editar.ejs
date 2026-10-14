@@ -1,206 +1,60 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<h1>Editar membro</h1>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<form action="/admin/membros/<%= membro.id %>/editar" method="POST">
 
-  <title>Editar Membro</title>
+  <!-- NOME -->
+  <input type="text" name="nome" placeholder="Nome" value="<%= membro.nome %>">
+  <br><br>
 
-  <link rel="stylesheet" href="/css/admin.css">
-</head>
+  <!-- SLUG -->
+  <input type="text" name="slug" placeholder="Slug" value="<%= membro.slug %>">
+  <br><br>
 
-<body>
+  <!-- FOTO -->
+  <input type="text" name="foto" placeholder="URL da foto" value="<%= membro.foto %>">
+  <br><br>
 
-  <!-- HEADER -->
-  <header class="admin-header">
+  <!-- EIXO -->
+  <select name="eixo">
+    <option value="Apoio" <%= membro.eixo === 'Apoio' ? 'selected' : '' %>>Apoio</option>
+    <option value="Inovação" <%= membro.eixo === 'Inovação' ? 'selected' : '' %>>Inovação</option>
+    <option value="Técnico" <%= membro.eixo === 'Técnico' ? 'selected' : '' %>>Técnico</option>
+  </select>
+  <br><br>
 
-    <h1>
-      Editar Membro
-    </h1>
+  <!-- TIME -->
+  <select name="time">
+    <option value="" <%= !membro.time ? 'selected' : '' %>>Nenhum</option>
+    <option value="Processos" <%= membro.time === 'Processos' ? 'selected' : '' %>>Processos</option>
+    <option value="Mídias" <%= membro.time === 'Mídias' ? 'selected' : '' %>>Mídias</option>
+  </select>
+  <br><br>
 
-    <div class="header-buttons">
+  <!-- CARGO -->
+  <select name="cargo">
+    <option value="Membro" <%= membro.cargo === 'Membro' ? 'selected' : '' %>>Membro</option>
+    <option value="Coordenador" <%= membro.cargo === 'Coordenador' ? 'selected' : '' %>>Coordenador</option>
+    <option value="Gerente de Projetos" <%= membro.cargo === 'Gerente de Projetos' ? 'selected' : '' %>>Gerente de Projetos</option>
+    <option value="Gerente Institucional" <%= membro.cargo === 'Gerente Institucional' ? 'selected' : '' %>>Gerente Institucional</option>
+    <option value="Diretor" <%= membro.cargo === 'Diretor' ? 'selected' : '' %>>Diretor</option>
+  </select>
+  <br><br>
 
-      <a
-        href="/admin/membros"
-        class="btn btn-secondary"
-      >
-        Voltar
-      </a>
+  <!-- DESCRIÇÃO -->
+  <textarea name="descricao" placeholder="Descrição"><%= membro.descricao %></textarea>
+  <br><br>
 
-      <a
-        href="/logout"
-        class="btn btn-danger"
-      >
-        Sair
-      </a>
+  <!-- PROJETOS -->
+  <input type="text" name="projetos" placeholder="Projetos separados por vírgula" value="<%= membro.projetos %>">
+  <br><br>
 
-    </div>
+  <!-- ATIVO -->
+  <label>
+    <input type="checkbox" name="ativo" <%= membro.ativo ? 'checked' : '' %>>
+    Ativo
+  </label>
+  <br><br>
 
-  </header>
+  <button type="submit">Salvar</button>
 
-
-  <!-- CONTAINER -->
-  <main class="admin-container">
-
-    <div class="form-card">
-
-      <form
-        action="/admin/membros/<%= membro.id %>/editar"
-        method="POST"
-        class="admin-form"
-      >
-
-        <!-- NOME -->
-        <div class="form-group">
-
-          <label>
-            Nome
-          </label>
-
-          <input
-            type="text"
-            name="nome"
-            value="<%= membro.nome %>"
-            required
-          >
-
-        </div>
-
-
-        <!-- SLUG -->
-        <div class="form-group">
-
-          <label>
-            Slug
-          </label>
-
-          <input
-            type="text"
-            name="slug"
-            value="<%= membro.slug %>"
-            required
-          >
-
-        </div>
-
-
-        <!-- FOTO -->
-        <div class="form-group">
-
-          <label>
-            URL da Foto
-          </label>
-
-          <input
-            type="text"
-            name="foto"
-            value="<%= membro.foto %>"
-          >
-
-        </div>
-
-
-        <!-- EIXO -->
-        <div class="form-group">
-
-          <label>
-            Eixo
-          </label>
-
-          <input
-            type="text"
-            name="eixo"
-            value="<%= membro.eixo %>"
-          >
-
-        </div>
-
-
-        <!-- TIME -->
-        <div class="form-group">
-
-          <label>
-            Time
-          </label>
-
-          <input
-            type="text"
-            name="time"
-            value="<%= membro.time %>"
-          >
-
-        </div>
-
-
-        <!-- DESCRIÇÃO -->
-        <div class="form-group">
-
-          <label>
-            Descrição
-          </label>
-
-          <textarea
-            name="descricao"
-            rows="5"
-          ><%= membro.descricao %></textarea>
-
-        </div>
-
-
-        <!-- PROJETOS -->
-        <div class="form-group">
-
-          <label>
-            Projetos
-          </label>
-
-          <input
-            type="text"
-            name="projetos"
-            value="<%= membro.projetos ? membro.projetos.join(', ') : '' %>"
-          >
-
-          <small>
-            Separar projetos por vírgula
-          </small>
-
-        </div>
-
-
-        <!-- ATIVO -->
-        <div class="checkbox-group">
-
-          <input
-            type="checkbox"
-            name="ativo"
-            <%= membro.ativo ? "checked" : "" %>
-          >
-
-          <label>
-            Membro ativo
-          </label>
-
-        </div>
-
-
-        <!-- BOTÕES -->
-        <div class="form-actions">
-
-          <button
-            type="submit"
-            class="btn btn-primary"
-          >
-            Salvar Alterações
-          </button>
-
-        </div>
-
-      </form>
-
-    </div>
-
-  </main>
-
-</body>
-</html>
+</form>

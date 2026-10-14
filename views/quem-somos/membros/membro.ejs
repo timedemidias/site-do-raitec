@@ -1,6 +1,4 @@
-
-
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -21,4 +19,226 @@
 
 </body>
 </html>
+-->
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de <%= membro.nome %> - RAITec</title>
+    
+    <!-- Fontes  -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Maven+Pro:wght@400..900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS  da página específica -->
+    <link rel="stylesheet" href="/css/membro.css">
+</head>
+<body>
+
+    <!-- Cabeçalho  -->
+    <!-- CSS do header original -->
+    <link rel="stylesheet" href="/css/header.css">
+
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="/">
+                <img src="/images/logo.png" alt="Logo RAITec">
+            </a>
+        </div>
+
+        <button class="btn-abrir-menu" id="btnAbrir">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Menu com a estrutura integrada -->
+        <nav id="menuMobile" class="menu">
+            <div class="menu-container">
+                <button class="btn-fechar-menu" id="btnFechar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                
+                <ul>
+                    <li><a href="/">Início</a></li>
+
+                    <li class="dropdown">
+                        <a>Quem Somos</a>
+                        <ul class="submenu">
+                            <li><a href="/sobre">Sobre o Raitec</a></li>
+                            <li><a href="/estrutura">Estrutura</a></li>
+                            <li><a href="/membros">Membros</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/projetos">Projetos</a></li>
+                    <li><a href="/eventos">Eventos</a></li>
+                    <li><a href="/extensao">Extensão</a></li>
+                    <li><a href="/raipedia">Raipedia</a></li>
+                    <li><a href="/processo-seletivo">Processo Seletivo</a></li>
+                    <li><a href="/noticias">Notícias</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal: Perfil do Membro -->
+    <main class="perfil-container">
+        
+        
+        <!-- Parte Superior: Imagem e Infos dinâmicas -->
+        <section class="perfil-topo">
+            <div class="perfil-img-box">
+                <!-- Lógica da foto -->
+                <% if (membro.foto) { %>
+                    <img src="<%= membro.foto %>" alt="Foto de <%= membro.nome %>" class="perfil-img" id="perfilFoto">
+                <% } else { %>
+                    <div class="perfil-img" id="perfilFoto" style="background-color: #ccc; width: 100%; aspect-ratio: 1/1; border-radius: 8px;"></div>
+                <% } %>
+            </div>
+            
+            <div class="perfil-dados">
+                <!-- Nome -->
+                <div class="dado-destaque nome" id="perfilNome"><%= membro.nome %></div>
+                
+                <!-- Informações Secundárias: Eixo, Time, Cargo e Status -->
+                <div class="dado-secundario">
+                    <div class="dado-destaque" id="perfilEixo">EIXO: <%= membro.eixo %></div>
+                    <div class="dado-destaque" id="perfilTime">TIME: <%= membro.time %></div>
+                    <div class="dado-destaque" id="perfilCargo">CARGO: <%= membro.cargo %></div>
+                    <div class="dado-destaque" id="perfilStatus">
+                        <%= membro.ativo ? 'Membro Ativo' : 'Ex-Membro' %>
+                    </div>
+                </div>
+
+                <!-- Nova Descrição em formato de Card -->
+                <div class="descricao-card">
+                    <strong>DESCRIÇÃO:</strong> <%= membro.descricao %>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parte Inferior: Projetos Trabalhados -->
+        <section class="perfil-projetos">
+            <div class="projetos-titulo">PROJETOS TRABALHADOS:</div>
+            
+            <div class="carrossel-wrapper">
+                <button class="btn-seta" id="btnPrev" aria-label="Voltar">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                
+                <div class="projetos-track" id="projetosTrack">
+                    <% if (membro.projetos && membro.projetos.length > 0) { %>
+                        <% membro.projetos.forEach(projeto => { %>
+                            <div class="projeto-card">
+                                <strong class="projeto-nome"><%= projeto %></strong>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p style="font-family: 'Cairo', sans-serif; color: #666; font-size: 18px; padding-left: 10px;">Nenhum projeto cadastrado.</p>
+                    <% } %>
+                </div>
+
+                <button class="btn-seta" id="btnNext" aria-label="Avançar">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+            <!-- Presumi que a variável de projetos no  banco de dados salvará um array (lista) de strings, como ["Projeto 1", "Projeto 2"]. 
+            Caso seja salvo de outra forma (por exemplo, como uma lista de objetos com propriedades internas, como projeto.nome), 
+            basta trocar  projeto por  projeto.nome-->
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <div class="rodape_caixa"> 
+            <div class="rodape_info">
+                <div class="rodape_logo"> 
+                    <a href="/"><img src="/images/logo2.png" alt="logo 2 do raitec"></a>
+                </div>
+                <div class="rodape_texto">
+                    <p> © 2026 RAITEC — Todos os direitos reservados.</p>
+                    <p>Contato: <a href="mailto:raitec@ufc.br">raitec@ufc.br</a> </p>
+                </div>
+            </div>
+            <div class="rodape_social">
+                <a href="https://www.facebook.com/raitec.ufc/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/raitec-ufc/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@raitecufc9945" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/raitec.ufc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!--parte do javascript -->
+    <script>
+        // Lógica do Menu Mobile
+        const btnAbrir = document.getElementById('btnAbrir');
+        const btnFechar = document.getElementById('btnFechar');
+        const menuMobile = document.getElementById('menuMobile');
+
+        if (btnAbrir && btnFechar && menuMobile) {
+            btnAbrir.addEventListener('click', () => menuMobile.classList.add('ativo'));
+            btnFechar.addEventListener('click', () => menuMobile.classList.remove('ativo'));
+        }
+
+        // Lógica do Carrossel de Projetos
+        const track = document.getElementById('projetosTrack');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+
+        if (track && btnPrev && btnNext) {
+            let isScrolling = false;
+
+            function animarScroll(elemento, destino, duracao) {
+                if (isScrolling) return;
+                isScrolling = true;
+                const inicio = elemento.scrollLeft;
+                const distancia = destino - inicio;
+                let tempoInicio = null;
+
+                function animacao(tempoAtual) {
+                    if (tempoInicio === null) tempoInicio = tempoAtual;
+                    const tempoDecorrido = tempoAtual - tempoInicio;
+                    let progresso = Math.min(tempoDecorrido / duracao, 1);
+                    const suavizacao = progresso < 0.5 
+                        ? 2 * progresso * progresso 
+                        : 1 - Math.pow(-2 * progresso + 2, 2) / 2;
+                    
+                    elemento.scrollLeft = inicio + (distancia * suavizacao);
+
+                    if (tempoDecorrido < duracao) {
+                        requestAnimationFrame(animacao);
+                    } else {
+                        isScrolling = false; 
+                    }
+                }
+                requestAnimationFrame(animacao);
+            }
+
+            btnNext.addEventListener('click', () => {
+                const card = track.querySelector('.projeto-card');
+                if (!card) return;
+                const tamanhoPasso = card.offsetWidth + 30; 
+                const destinoFinal = Math.ceil((track.scrollLeft + 1) / tamanhoPasso) * tamanhoPasso;
+                animarScroll(track, destinoFinal, 600); 
+            });
+            
+            btnPrev.addEventListener('click', () => {
+                const card = track.querySelector('.projeto-card');
+                if (!card) return;
+                const tamanhoPasso = card.offsetWidth + 30;
+                let destinoFinal = Math.floor((track.scrollLeft - 1) / tamanhoPasso) * tamanhoPasso;
+                if (destinoFinal < 0) destinoFinal = 0;
+                animarScroll(track, destinoFinal, 600);
+            });
+        }
+    </script>
+</body>
+</html>
