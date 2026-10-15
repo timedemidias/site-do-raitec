@@ -1,81 +1,128 @@
+
 const express = require("express");
 const router = express.Router();
+
 const db = require("../../services/firebaseAdmin");
 
-/*
-const noticias = [
-    {
-        nome: "Apresentação Institucional do Raitec 2026",
-        slug: "apresentacao-institucional-2026",
-        data: "00/00/0000",
-        descricao: "blábláblá...",
-        conteudo: "blábláblá...",
-    },
-    {
-        nome: "Processo Seletivo 2026.1",
-        slug: "processo-seletivo-2026-1",
-        data: "00/00/0000",
-        descricao: "blábláblá...",
-        conteudo: "blábláblá...",
-    }
-]
-
-// LISTA DE MEMBROS
-router.get("/noticias", (req, res) => {
-  res.render("noticias/index", { noticias });
-});
-
-// NOTÍCIA INDIVIDUAL
-router.get("/noticias/:slug", (req, res) => {
-  const slug = req.params.slug;
-
-  const noticia = noticias.find(n => n.slug === slug);
-
-  if (!noticia) {
-    return res.status(404).send("noticia não encontrada!");
-  }
-
-  res.render("noticias/noticia", { noticia });
-});*/
-
+// ==========================================
+// LISTA DE NOTÍCIAS
+// GET /noticias
+// ==========================================
 router.get("/noticias", async (req, res) => {
   try {
+    const busca = (req.query.busca || "").trim();
+
     const snapshot = await db.collection("noticias").get();
 
-    const noticias = [];
-    snapshot.forEach(doc => {
-      noticias.push(doc.data());
+    let noticias = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    // Pesquisa por nome ou descrição
+    if (busca) {
+      const termo = busca.toLowerCase();
+
+      noticias = noticias.filter(noticia => {
+        const nome = (noticia.nome || "").toLowerCase();
+        const descricao = (noticia.descricao || "").toLowerCase();
+
+        return nome.includes(termo) ||
+               descricao.includes(termo);
+      });
+    }
+
+    // Ordena da mais recente para a mais antiga
+    noticias.sort((a, b) => {
+      const converterData = valor => {
+        if (valor?.toDate) {
+          return valor.toDate().getTime();
+        }
+
+        if (!valor) {
+          return 0;
+        }
+
+        // Aceita datas do Firestore e datas em texto
+        const data = new Date(valor).getTime();
+        return Number.isNaN(data) ? 0 : data;
+      };
+
+      return converterData(b.data) - converterData(a.data);
     });
 
-    res.render("noticias/index", { noticias });
+    return res.render("noticias/index", {
+      noticias,
+      busca
+    });
 
   } catch (erro) {
-    console.error(erro);
-    res.status(500).send("Erro ao buscar notícia!");
+    console.error("Erro ao buscar notícias:", erro);
+    return res.status(500).send("Erro ao buscar notícias.");
   }
 });
 
-
-
+// ==========================================
+// NOTÍCIA INDIVIDUAL
+// GET /noticias/:slug
+// ==========================================
 router.get("/noticias/:slug", async (req, res) => {
   try {
     const slug = req.params.slug;
 
+    // Busca a notícia exclusivamente pelo slug
     const snapshot = await db.collection("noticias")
       .where("slug", "==", slug)
+      .limit(1)
       .get();
 
     if (snapshot.empty) {
-      return res.status(404).send("Noticia não encontrada");
+      return res.status(404).send("Notícia não encontrada.");
     }
 
-    const noticia = snapshot.docs[0].data();
+    const documento = snapshot.docs[0];
 
-    res.render("noticias/noticias", { noticia });
+    const noticia = {
+      ...documento.data()
+    };
+
+    // Busca todas as notícias para montar a seção
+    // de outras notícias, excluindo a notícia atual
+    const todasSnapshot = await db.collection("noticias").get();
+
+    const outrasNoticias = todasSnapshot.docs
+      .filter(doc => doc.id !== documento.id)
+      .map(doc => ({
+        ...doc.data()
+      }));
+
+    // Ordena pelas mais recentes, quando houver data
+    outrasNoticias.sort((a, b) => {
+      const converterData = valor => {
+        if (valor?.toDate) {
+          return valor.toDate().getTime();
+        }
+
+        if (!valor) {
+          return 0;
+        }
+
+        const data = new Date(valor).getTime();
+        return Number.isNaN(data) ? 0 : data;
+      };
+
+      return converterData(b.data) - converterData(a.data);
+    });
+
+    // Renderiza a página individual
+    return res.render("noticias/noticia", {
+      noticia,
+      outrasNoticias
+    });
 
   } catch (erro) {
-    console.error(erro);
-    res.status(500).send("Erro ao buscar noticia");
+    console.error("Erro ao buscar notícia individual:", erro);
+    return res.status(500).send("Erro ao abrir notícia.");
   }
 });
 
