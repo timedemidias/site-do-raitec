@@ -46,6 +46,7 @@ const adminRoutes = require("./routes/admin/admin");
 const adminMembrosRoutes = require("./routes/admin/membros");
 const adminNoticiasRoutes = require("./routes/admin/noticias");
 
+
 // USAR ROTAS
 app.use("/", sobreRoutes);
 app.use("/", estruturaRoutes);
@@ -62,6 +63,7 @@ app.use("/", adminRoutes);
 app.use("/", testeRoutes);
 app.use("/admin", adminMembrosRoutes);
 app.use("/admin", adminNoticiasRoutes);
+
 
 // ROTA PRINCIPAL
 app.get("/", (req, res) => {
