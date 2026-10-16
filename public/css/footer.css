@@ -1,0 +1,52 @@
+/*Rodapé*/
+
+footer {
+  background: #6e6e6e;
+  color: #fff;
+  padding: 36px 48px 28px;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footer-left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/*tamanho da logo de baixo*/
+.footer-brand{
+  height: 80px;
+}
+
+/*texto do footer*/
+.footer-info p {
+    color: #e6e6e6;
+    font-size: 0.82rem;
+    line-height: 1.9;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.footer-info a{
+  color: #e6e6e6;
+}
+
+/*Simbolos redes sociais */
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 1px;
+}
+
+.footer-social a {
+    color: #e6e6e6;
+    text-decoration: none;
+}
+
+.footer-social a:hover {color:#09cccc}

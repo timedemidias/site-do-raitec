@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprovados no P.S. — RAITec</title>
+  <link rel="stylesheet" href="/css/processo-seletivo.css">
+</head>
+<body>
+
+  <%- include("../partials/header") %>
+
+  <main class="ps">
+    <div class="container">
+      <!--<a class="back" href="/processo-seletivo">← Voltar ao cronograma</a> -->
+      <h1 class="page-title">Aprovados no P.S. <%= edicao %></h1>
+
+      <div class="approved-intro">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc. TudoTudo Aenean feugiat dignissim. Etiam a pharetra orci. Aliquam erat volutpat. Curabitur tincidunt augue in venenatis porta. Phasellus euismod dignissim blandit. Sed semper et diam, sed ipsum.</p>
+        <p>Sed molestie volutpat nisl, sed tincidunt velit faucibus et. Duis sed consectetur felis. Aenean convallis mauris sed ligula bibendum, id lobortis purus venenatis. Maecenas vehicula feugiat purus, nec feugiat tristique ante. Duis sit lorem varius, pharetra mi quis, euismod arcu. Phasellus accumsan ac massa a lacinia. Suspendisse vitae lacinia.</p>
+      </div>
+
+      <div class="approved-grid">
+        <% aprovados.forEach(p => { %>
+          <div class="person">
+            <div class="photo">
+              <% if (p.foto) { %>
+                <img src="/images/aprovados/<%= p.foto %>" alt="<%= p.nome %>"
+                     loading="lazy" onerror="this.remove()">
+              <% } %>
+            </div>
+            <p><%= p.nome %><br><%= p.eixo %><br><%= p.time %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </main>
+
+    <!--Rodapé-->
+   <%# ("../partials/footer") %>
+
+  <script>
+    /*aprovados.ejs: monta a grade*/
+const grid = document.getElementById("approvedGrid");
+if (grid) {
+  APROVADOS.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "person";
+
+    const photo = document.createElement("div");
+    photo.className = "photo";
+    if (p.foto) {
+      const img = document.createElement("img");
+      img.src = p.foto;
+      img.alt = p.nome;
+      img.loading = "lazy";
+      img.addEventListener("error", () => img.remove()); // sem foto: mantém o quadrado cinza
+      photo.appendChild(img);
+    }
+
+    const info = document.createElement("p");
+    [p.nome, p.eixo, p.time].forEach((linha, i) => {
+      if (i) info.appendChild(document.createElement("br"));
+      info.appendChild(document.createTextNode(linha));
+    });
+
+    card.append(photo, info);
+    grid.appendChild(card);
+  });
+}
+  </script>
+</body>
+</html>

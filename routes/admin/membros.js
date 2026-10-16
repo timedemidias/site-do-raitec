@@ -1,15 +1,9 @@
 const express = require("express");
-
 const router = express.Router();
-
-const db =
-  require("../../services/firebaseAdmin");
+const db = require("../../services/firebaseAdmin");
 
 
-// ========================================
 // MIDDLEWARE DE AUTENTICAÇÃO
-// ========================================
-
 function verificarAuth(req, res, next) {
 
   if (!req.session.usuario) {
@@ -25,10 +19,7 @@ function verificarAuth(req, res, next) {
 router.use(verificarAuth);
 
 
-// ========================================
 // LISTAR MEMBROS
-// ========================================
-
 router.get("/membros", async (req, res) => {
 
   try {
@@ -62,21 +53,13 @@ router.get("/membros", async (req, res) => {
 });
 
 
-// ========================================
 // TELA CRIAR
-// ========================================
-
 router.get("/membros/criar", (req, res) => {
-
   res.render("admin/membros/criar");
-
 });
 
 
-// ========================================
 // CRIAR MEMBRO
-// ========================================
-
 router.post("/membros/criar", async (req, res) => {
 
   try {
@@ -144,10 +127,7 @@ router.post("/membros/criar", async (req, res) => {
 });
 
 
-// ========================================
 // TELA EDITAR
-// ========================================
-
 router.get("/membros/:id/editar", async (req, res) => {
 
   try {
@@ -181,10 +161,7 @@ router.get("/membros/:id/editar", async (req, res) => {
 });
 
 
-// ========================================
 // EDITAR MEMBRO
-// ========================================
-
 router.post("/membros/:id/editar", async (req, res) => {
 
   try {
@@ -254,10 +231,7 @@ router.post("/membros/:id/editar", async (req, res) => {
 });
 
 
-// ========================================
 // DELETAR MEMBRO
-// ========================================
-
 router.post("/membros/:id/deletar", async (req, res) => {
 
   try {
