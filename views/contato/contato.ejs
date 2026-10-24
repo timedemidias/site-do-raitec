@@ -1,14 +1,157 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>RAITec</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | RAITEC</title>
+    <link rel="stylesheet" href="../css/contato.css">
+
 </head>
 <body>
 
   <%- include("../partials/header") %>
 
-  <h3>Página de Contato</h3>
+
+    <header class="hero">
+        <div class="hero__content">
+            <h1>Vamos conversar sobre o RAITEC</h1>
+            <p>
+                Fale com a equipe, encontre nossa localização e
+                acompanhe o projeto de extensão nas redes sociais.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Localização -->
+        <section class="location section">
+            <div class="location__info">
+                <h2>Localização</h2>
+
+                <a class="address"
+                   href="https://maps.google.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Campus do Pici - Ac. Público, BLOCO 725 - s/n - Pici, Fortaleza - CE, 60455-970, Brazil
+                </a>
+
+                <a class="contact-line" href="mailto:deti@ufc.br">
+                    <span class="small-icon" aria-hidden="true">✉</span>
+                    <span>raitec@ufc.br</span>
+                </a>
+
+            </div>
+
+           
+          <div class="map-placeholder">
+            <iframe
+              src="https://maps.google.com/maps?q=Campus%20do%20Pici%2C%20Bloco%20725%2C%20UFC%2C%20Fortaleza%2C%20CE&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="300"
+              style="border: 0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localização do RAITEC no Campus do Pici">
+            </iframe>
+          </div>
+
+        </section>
+
+        <!-- Redes sociais -->
+        <section class="social section">
+            <p class="eyebrow">NOS SIGA</p>
+            <h2>Redes Sociais</h2>
+
+           
+        <div class="social__grid">
+            <a class="social-card" href="https://www.tiktok.com/@raitec.ufc" aria-label="TikTok"
+              target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.simpleicons.org/tiktok"
+                    alt="" class="social-icon">
+                <span>TikTok</span>
+            </a>
+
+            <a class="social-card" href="https://www.instagram.com/raitec.ufc/" aria-label="Instagram"
+              target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.simpleicons.org/instagram"
+                    alt="" class="social-icon">
+                <span>Instagram</span>
+            </a>
+
+            <a class="social-card" href="https://www.youtube.com/@raitecufc9945/videos" aria-label="YouTube"
+              target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.simpleicons.org/youtube"
+                    alt="" class="social-icon">
+                <span>YouTube</span>
+            </a>
+            
+            <a class="social-card" href="https://br.linkedin.com/company/raitec-ufc" aria-label="LinkedIn"
+              target="_blank" rel="noopener noreferrer">
+                <span class="social-icon linkedin-icon">in</span>
+                <span>LinkedIn</span>
+            </a>
+
+            </a>
+
+        </div>
+
+            </div>
+        </section>
+
+        <!-- Formulário de contato -->
+        <section class="contact section">
+            <h2>Fale Conosco</h2>
+
+            <p class="contact__subtitle">
+                Preencha o formulário abaixo. Retornaremos por e-mail.
+            </p>
+
+            <form class="contact-form" action="#" method="post">
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="nome">Nome completo</label>
+                        <input
+                            id="nome"
+                            name="nome"
+                            type="text"
+                            placeholder="Seu nome completo"
+                            autocomplete="name"
+                            required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">E-mail</label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="sitedoraitec@gmail.com"
+                            autocomplete="email"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea
+                        id="mensagem"
+                        name="mensagem"
+                        placeholder="Escreva sua dúvida ou mensagem..."
+                        rows="5"
+                        required></textarea>
+                </div>
+
+                <button type="submit">Enviar mensagem</button>
+
+            </form>
+        </section>
+
+    </main>
+
+      <%- include("../partials/footer") %>
 
 </body>
 </html>

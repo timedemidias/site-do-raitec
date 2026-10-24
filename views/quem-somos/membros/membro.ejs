@@ -39,54 +39,14 @@
     <!-- CSS  da página específica -->
     <link rel="stylesheet" href="/css/membro.css">
 </head>
+
+
 <body>
 
-    <!-- Cabeçalho  -->
-    <!-- CSS do header original -->
-    <link rel="stylesheet" href="/css/header.css">
+
 
     <!-- Cabeçalho -->
-    <header class="cabecalho">
-        <div class="logo">
-            <a href="/">
-                <img src="/images/logo.png" alt="Logo RAITec">
-            </a>
-        </div>
-
-        <button class="btn-abrir-menu" id="btnAbrir">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
-        <!-- Menu com a estrutura integrada -->
-        <nav id="menuMobile" class="menu">
-            <div class="menu-container">
-                <button class="btn-fechar-menu" id="btnFechar">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                
-                <ul>
-                    <li><a href="/">Início</a></li>
-
-                    <li class="dropdown">
-                        <a>Quem Somos</a>
-                        <ul class="submenu">
-                            <li><a href="/sobre">Sobre o Raitec</a></li>
-                            <li><a href="/estrutura">Estrutura</a></li>
-                            <li><a href="/membros">Membros</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="/projetos">Projetos</a></li>
-                    <li><a href="/eventos">Eventos</a></li>
-                    <li><a href="/extensao">Extensão</a></li>
-                    <li><a href="/raipedia">Raipedia</a></li>
-                    <li><a href="/processo-seletivo">Processo Seletivo</a></li>
-                    <li><a href="/noticias">Notícias</a></li>
-                    <li><a href="/contato">Contato</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<%- include('../../partials/header') %>
 
     <!-- Conteúdo Principal: Perfil do Membro -->
     <main class="perfil-container">
