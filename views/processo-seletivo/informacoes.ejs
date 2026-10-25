@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informações de Cada Etapa — RAITec</title>
+  <link rel="stylesheet" href="/css/processo-seletivo.css">
+</head>
+<body>
+    
+    <%- include("../partials/header") %>
+
+  <main class="ps">
+    <div class="container">
+      <!-- <a class="back" href="/processo-seletivo">← Voltar ao cronograma</a> -->
+      <h1 class="page-title">Informações de Cada Etapa</h1>
+
+      <div class="info-card" id="inscricao">
+        <h2>Informações sobre a Inscrição</h2>
+        <p>TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+        <div class="btn-row">
+          <a class="btn" href="#" target="_blank" rel="noopener">Faça sua inscrição!</a>
+        </div>
+      </div>
+
+      <div class="info-card" id="dinamica">
+        <h2>Informações sobre a Dinâmica</h2>
+        <p>TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+        <div class="btn-grid">
+          <a class="btn" href="#">Case de Retórica</a>
+          <a class="btn" href="#">Case de Automação</a>
+          <a class="btn" href="#">Case da IA</a>
+          <a class="btn" href="#">Case de Tecnologias</a>
+        </div>
+      </div>
+
+      <div class="info-card" id="entrevista">
+        <h2>Informações sobre a Entrevista</h2>
+        <p>TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+        <div class="btn-row">
+          <a class="btn" href="#">Agende sua Entrevista</a>
+        </div>
+      </div>
+
+      <div class="info-card" id="trainee">
+        <h2>Informações sobre o Trainee</h2>
+        <h3>Cases dos Eixos</h3>
+        <div class="btn-spread">
+          <a class="btn" href="#">Técnica Sustentável</a>
+          <a class="btn" href="#">Inovação Educacional</a>
+          <a class="btn" href="#">Tecnologias e Saúde</a>
+        </div>
+        <h3>Cases dos Times</h3>
+        <div class="btn-spread">
+          <a class="btn" href="#">Processo</a>
+          <a class="btn" href="#">Mídias</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--Rodapé-->
+   <%# ("../partials/footer") %>
+
+  <script>
+  /*informacoes.ejs: destaca a seção vinda do link (#id)*/
+function destacarSecao() {
+  const id = location.hash.slice(1);
+  const alvo = id && document.querySelector(".info-card#" + CSS.escape(id));
+  if (!alvo) return;
+  alvo.classList.add("highlight");
+  setTimeout(() => alvo.classList.remove("highlight"), 1800);
+}
+if (document.querySelector(".info-card")) {
+  destacarSecao();
+  window.addEventListener("hashchange", destacarSecao);
+}
+  </script>
+</body>
+</html>

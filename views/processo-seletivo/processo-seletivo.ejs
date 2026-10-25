@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -10,5 +10,123 @@
 
   <h3>Página do Processo Seletivo</h3>
 
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Processo Seletivo RAITec</title>
+  <link rel="stylesheet" href="css/processo-seletivo.css">
+</head>
+<body>
+
+  <%- include("../partials/header") -%>
+
+  <main class="ps">
+    <div class="hero">
+      <h1>Processo Seletivo RAITec<br><%= edicao %></h1>
+      <div class="countdown" data-alvo="<%= dataLimite %>" aria-label="Contagem regressiva">
+        <div class="cd-item"><span id="cd-dias">00</span><small>Dias</small></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-item"><span id="cd-horas">00</span><small>Horas</small></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-item"><span id="cd-min">00</span><small>Minutos</small></div>
+        <span class="cd-sep">:</span>
+        <div class="cd-item"><span id="cd-seg">00</span><small>Segundos</small></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="section-title">Cronograma - Etapas</h2>
+
+      <div class="stages">
+
+        <article class="stage">
+          <div class="stage-num"><strong>01</strong><span>Inscrições</span></div>
+          <p class="stage-text">TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+          <div class="stage-actions">
+            <a class="btn" href="/processo-seletivo/informacoes#inscricao">Informações</a>
+            <button class="btn" data-resultado="1">Resultados</button>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-num"><strong>02</strong><span>Dinâmicas</span></div>
+          <p class="stage-text">TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+          <div class="stage-actions">
+            <a class="btn" href="/processo-seletivo/informacoes#dinamica">Informações</a>
+            <button class="btn" data-resultado="2">Resultados</button>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-num"><strong>03</strong><span>Entrevistas</span></div>
+          <p class="stage-text">TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+          <div class="stage-actions">
+            <a class="btn" href="/processo-seletivo/informacoes#entrevista">Informações</a>
+            <button class="btn" data-resultado="3">Resultados</button>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-num"><strong>04</strong><span>Trainee</span></div>
+          <p class="stage-text">TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+          <div class="stage-actions">
+            <a class="btn" href="/processo-seletivo/informacoes#trainee">Informações</a>
+            <button class="btn" data-resultado="4">Resultados</button>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-num"><strong>05</strong><span>Resultado Final</span></div>
+          <p class="stage-text">TudoLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt nibh ac magna volutpat, ut aliquam justo suscipit. Pellentesque aliquam libero cursus elit eleifend, id scelerisque tellus pretium. Nullam a sodales nunc.</p>
+          <div class="stage-actions">
+            <a class="btn" href="/processo-seletivo/aprovados">Resultados</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!--Rodapé-->
+   <%# ("../partials/footer") %>
+
+  <script> 
+
+/*Cronograma: contagem regressiva*/
+const countdown = document.querySelector(".countdown");
+if (countdown && countdown.dataset.alvo) {
+  const alvo = new Date(countdown.dataset.alvo).getTime(); // data vem do EJS
+  const pad = (n) => String(n).padStart(2, "0");
+  const els = {
+    dias: document.getElementById("cd-dias"),
+    horas: document.getElementById("cd-horas"),
+    min: document.getElementById("cd-min"),
+    seg: document.getElementById("cd-seg"),
+  };
+  const atualizar = () => {
+    const diff = Math.max(0, alvo - Date.now());
+    els.dias.textContent = pad(Math.floor(diff / 86400000));
+    els.horas.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    els.min.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    els.seg.textContent = pad(Math.floor((diff % 60000) / 1000));
+  };
+  atualizar();
+  setInterval(atualizar, 1000);
+}
+
+/* Cronograma: aviso dos resultados das etapas 1 a 4*/
+document.querySelectorAll("[data-resultado]").forEach((btn) =>
+  btn.addEventListener("click", () =>
+    alert("Os resultados da etapa " + btn.dataset.resultado + " serão divulgados por e-mail ao candidato.")
+  )
+);
+
+  </script>
 </body>
 </html>
