@@ -1,24 +1,108 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>RAITec</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RAIP├ëDIA | RAITec</title>
+
+    <link rel="stylesheet" href="/css/raipedia.css">
 </head>
 <body>
 
-  <%- include("../partials/header") %>
+      <%- include("../partials/header") %>
 
-  <h1>Raipédia</h1>
 
-    <ul>
-    <% raipedia.forEach(a => { %>
-        <li>
-        <a href="/raipedia/<%= a.slug %>">
-            <strong><%= a.nome %></strong>
-        </a>
-        </li>
-    <% }) %>
-    </ul>
+    <main>
+
+        <section class="apresentacao">
+            <span class="identificacao">PLATAFORMA DE CONHECIMENTO</span>
+
+            <h1>RAIP├ëDIA</h1>
+
+            <p>
+                Um espa├ºo para aprender, compartilhar conhecimentos
+                e transformar ideias em projetos.
+            </p>
+
+            <a href="https://raipedia.onrender.com/"
+               class="botao"
+               target="_blank"
+               rel="noopener noreferrer">
+                Conhe├ºa a plataforma ÔåÆ
+            </a>
+        </section>
+
+        <section class="sobre">
+            <h2>O que ├® a RAIP├ëDIA?</h2>
+
+            <p>
+                A RAIP├ëDIA ├® uma plataforma independente do site principal
+                do RAITec, criada para organizar e disponibilizar conte├║dos
+                educacionais, materiais t├®cnicos, artigos, projetos e
+                documentos internos.
+            </p>
+        </section>
+
+        <section class="areas">
+            <h2>Explore a plataforma</h2>
+
+            <div class="areas-grid">
+
+                <article class="area">
+                    <span class="numero">01</span>
+                    <h3>Aprender</h3>
+                    <p>
+                        Capacita├º├Áes, programa├º├úo, eletr├┤nica,
+                        componentes e ferramentas.
+                    </p>
+                </article>
+
+                <article class="area">
+                    <span class="numero">02</span>
+                    <h3>Conhecer</h3>
+                    <p>
+                        Artigos, materiais de refer├¬ncia,
+                        documentos t├®cnicos e PDFs.
+                    </p>
+                </article>
+
+                <article class="area">
+                    <span class="numero">03</span>
+                    <h3>Praticar</h3>
+                    <p>
+                        Projetos, m├│dulos educacionais e
+                        materiais para aplica├º├úo pr├ítica.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="membros">
+            <div>
+                <h2>├ürea de membros</h2>
+                <p>
+                    Um espa├ºo dedicado ├ás capacita├º├Áes internas,
+                    aos comp├¬ndios t├®cnicos e ├á documenta├º├úo dos projetos.
+                </p>
+            </div>
+
+            <a href="https://raipedia.onrender.com/"
+               class="botao botao-escuro"
+               target="_blank"
+               rel="noopener noreferrer">
+                Acessar RAIP├ëDIA ÔåÆ
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <span>RAITec ┬À RAIP├ëDIA</span>
+        <a href="/">Voltar ao site principal</a>
+        <span>┬® <%= new Date().getFullYear() %></span>
+    </footer>
 
 </body>
 </html>
